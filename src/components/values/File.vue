@@ -1,0 +1,116 @@
+<template>
+  <b-container fluid>
+    <b-form-group id="input-groupfile" label="File:" label-for="fileInput">
+      <!--https://stackoverflow.com/questions/4093533/whats-the-difference-between-logical-events-and-native-events-in-gwt-->
+      <b-form-file
+        @change="handlefile"
+        id="fileInput"
+        type="file"
+        name="fileInput"
+        v-model="fileInput"
+        placeholder="Choose a file or drop it here..."
+        drop-placeholder="Drop file here..."
+        required
+      />
+    </b-form-group>
+
+    <b-form-group
+      id="nameinput-groupfile"
+      label="File Name:"
+      label-for="filenNameInput"
+    >
+      <b-form-input
+        id="filenNameInput"
+        type="text"
+        name="filenNameInput"
+        v-model="filenNameInput"
+        maxlength="100"
+        placeholder="file name"
+        required
+      />
+    </b-form-group>
+
+    <b-form-group
+      id="input-grouphashtag"
+      label="Hashtag:"
+      label-for="hashtagInput"
+    >
+      <b-form-input
+        id="hashtagInput"
+        type="text"
+        name="hashtagInput"
+        maxlength="100"
+        v-model="hashtagInput"
+        placeholder="Hashtags"
+      />
+    </b-form-group>
+  </b-container>
+</template>
+
+<script>
+export default {
+  name: "File",
+  props: ["file", "fileName", "hashtag", "extension"],
+  data() {
+    return {
+      fileInput: null,
+    };
+  },
+  methods: {
+    //https://medium.com/js-dojo/how-to-upload-base64-images-in-vue-nodejs-4e89635daebc
+    handlefile(event) {
+      const selectedFile = event.target.files[0];
+      this.transformbase64(selectedFile);
+    },
+    transformbase64(fileObject) {
+      const reader = new FileReader(); //posso immaginarlo come un buffer dove vado a ricevere il file
+      //https://regex101.com/
+      reader.onload = (event) => {
+        this.fileStringInput = event.target.result.replace( /^data:.+;base64,/,"");
+      };
+      reader.onerror = function (err) {
+        console.log("Error: ", err);
+      };
+      reader.readAsDataURL(fileObject); //se lettura va a buon fine .result Dataurl ed emissione dell'evento onload gestito da reader.onlad
+
+      //https://stackoverflow.com/questions/43708127/javascript-get-the-filename-and-extension-from-input-type-file
+      let nameObject = fileObject.name;
+      let lastDot = nameObject.lastIndexOf(".");
+      this.$emit("update:extension", nameObject.substring(lastDot));
+    },
+  },
+  watch: {
+    fileStringInput: function () {
+      if (this.fileStringInput === "") {
+        this.fileInput = null;
+      }
+    },
+  },
+  computed: {
+    fileStringInput: {
+      get: function () {
+        return this.file;
+      },
+      set: function (newValue) {
+        this.$emit("update:file", newValue);
+      },
+    },
+    filenNameInput: {
+      get: function () {
+        return this.fileName;
+      },
+      set: function (newValue) {
+        this.$emit("update:fileName", newValue);
+      },
+    },
+    hashtagInput: {
+      get: function () {
+        return this.hashtag;
+      },
+      set: function (newValue) {
+        this.$emit("update:hashtag", newValue);
+      },
+    },
+  },
+};
+</script>
