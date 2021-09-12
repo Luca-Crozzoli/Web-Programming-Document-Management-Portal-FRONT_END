@@ -26,7 +26,7 @@
 <script>
 
 import Credential from "../values/Credential.vue";
-import UserInfo from "../values/Userinfo.vue";
+import UserInfo from "../values/AccountInfo.vue";
 import Logo from "../values/Logo.vue";
 
 import axios from "axios";

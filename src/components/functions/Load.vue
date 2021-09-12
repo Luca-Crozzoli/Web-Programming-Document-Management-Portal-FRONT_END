@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import UserInfo from "../values/Userinfo.vue";
+import UserInfo from "../values/AccountInfo.vue";
 import File from "../values/File.vue";
 
 import axios from "axios";

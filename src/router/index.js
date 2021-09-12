@@ -45,10 +45,10 @@ const router = new VueRouter({
 //https://tenmilesquare.com/resources/software-development/creating-an-authentication-navigation-guard-in-vue/
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (!localStorage.getItem("JWTToken")) { //getitem riotrna la stringa o null. null in questo caso viene considerato falsy
+    if (!localStorage.getItem("JWTToken")) { //getItem riotrna la stringa o null. null in questo caso viene considerato falsy
       next({
         path: '/',
-        //query: { redirect: to.fullPath }//reindirzzio l'utente all'url che mi aveva chiesto dopo che sarà avvenuta l'autenticazione
+        query: { redirect: to.fullPath }//reindirzzio l'utente all'url che mi aveva chiesto dopo che sarà avvenuta l'autenticazione
       })
     } else if (from.matched.some((record) => record.meta.requiresAuth)) {
       if (localStorage.getItem("Username").length === 16) {

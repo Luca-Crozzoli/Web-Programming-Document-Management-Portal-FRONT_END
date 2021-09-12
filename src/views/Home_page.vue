@@ -19,11 +19,17 @@
     <Toasts :error="error" :warning="warning" :success="success" />
 
     <hr />
-    <router-link  @click="displayMessage('Consumer')" to="/consumer_page">consumer</router-link>
+    <router-link @click="displayMessage('Consumer')" to="/consumer_page"
+      >consumer</router-link
+    >
     <hr />
-    <router-link @click="displayMessage('ERRConsumer')" to="/uploader_page">uploader</router-link>
+    <router-link @click="displayMessage('ERRConsumer')" to="/uploader_page"
+      >uploader</router-link
+    >
     <hr />
-    <router-link @click="displayMessage('WARConsumer')" to="/admin_page">admin</router-link>
+    <router-link @click="displayMessage('WARConsumer')" to="/admin_page"
+      >admin</router-link
+    >
   </article>
 </template>
 
@@ -49,7 +55,7 @@ export default {
   },
   methods: {
     displayMessage(message) {
-      if (message.startsWith("ERR") || message.startsWith("Er")){
+      if (message.startsWith("ERR") || message.startsWith("Er")) {
         this.error = message;
         this.$bvToast.show("error_toast");
       } else if (message.startsWith("WAR")) {
@@ -63,15 +69,17 @@ export default {
     //--------------------------------------------
 
     loginuserpage(username) {
-      if (username.includes("@")) {
-        this.$router.push("/admin_page");
-      } else if (username.length === 4) {
-        this.$router.push("/uploader_page");
-      } else if (username.length === 16) {
-        this.$router.push("/consumer_page");
-      } else {
-        this.displayMessage("ERR: User unrecognized");
-      }
+      setTimeout(() => {
+        if (username.includes("@")) {
+          this.$router.push("/admin_page");
+        } else if (username.length === 4) {
+          this.$router.push("/uploader_page");
+        } else if (username.length === 16) {
+          this.$router.push("/consumer_page");
+        } else {
+          this.displayMessage("ERR: User unrecognized");
+        }
+      }, 3000);
     },
     //metodo utilizzato per fare il display del messaggio e ritorno alla sezione login
     registration(message) {
