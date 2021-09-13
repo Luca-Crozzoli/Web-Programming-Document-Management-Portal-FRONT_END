@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <article>
       <Navigationbar
         :applicant="'administrator'"
@@ -214,7 +214,7 @@ export default {
         );
       }
     },
-    data() {
+    date() {
       this.loadData = true;
       axios
         .post(`${process.env.VUE_APP_APIROOT}/list/administrator/report`, {
@@ -248,7 +248,7 @@ export default {
 
   created() {
     this.lastMonth();
-    this.filter();
+    this.date();
     this.loadData = true;
     axios
       .get(`${process.env.VUE_APP_APIROOT}/list/administrators`)
@@ -258,5 +258,9 @@ export default {
         this.loadData = false;
       });
   },
+
+  mounted(){
+     
+  }
 };
 </script>
