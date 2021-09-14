@@ -81,7 +81,9 @@ import Registration from "../components/functions/Registration.vue";
 import Toasts from "../components/layout/Toasts.vue";
 
 import axios from "axios";
-axios.defaults.headers["Authorization"] = `Bearer ${localStorage.getItem("JWTToken")}`;
+axios.defaults.headers["Authorization"] = `Bearer ${localStorage.getItem(
+  "JWTToken"
+)}`;
 export default {
   name: "Uploader_page",
   components: {
@@ -110,9 +112,9 @@ export default {
       consumerFilesListFields: [
         "id",
         "name",
-        { key: "loadDate", sortable: true },
-        { key: "visualizationDate", sortable: true },
-        "IPaddress",
+        { key: "dataUpload", sortable: true },
+        { key: "dataView", sortable: true },
+        "indIP",
         "hashtag",
       ],
       loadData: false,
@@ -187,15 +189,13 @@ export default {
 
     upload_consumer(newConsumer) {
       const { username } = newConsumer;
-      if (
-        this.consumerList.findIndex((el) => el.username === username) === -1
-      ) {
+      if (this.consumerList.findIndex((el) => el.username === username) === -1) {
         this.consumerList.push(newConsumer);
       }
     },
     upload_file(fileLoaded) {
       this.uploaderFilesList.push(fileLoaded);
-      if (fileLoaded.usernameConsumer === this.consumerConfirmed) {
+      if (fileLoaded.usernameCons === this.consumerConfirmed) {
         this.consumerFilesList.push(fileLoaded);
       }
       this.orederingFile();
@@ -245,7 +245,10 @@ export default {
 
     axios
       .get(`${process.env.VUE_APP_APIROOT}/list/uploader/files`)
-      .then((res) => (this.uploaderFilesList = res.data))
+      .then((res) => {
+        this.uploaderFilesList = res.data;
+        console.log("risposta per i file uploadati: " + res.data);
+      })
       .catch((err) => this.displayMessage(err.toString())) //utilizzo dei messaggi
       .finally(() => {
         this.loadData = false;

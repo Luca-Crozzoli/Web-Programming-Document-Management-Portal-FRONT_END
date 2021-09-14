@@ -63,15 +63,6 @@ export default {
     };
   },
   methods: {
-    reset() {
-      this.file = "";
-      this.fileName = "";
-      this.hashtag = "";
-      this.extension = "";
-      this.usernameConsumer = "";
-      this.nameConsumer = "";
-      this.emailConsumer = "";
-    },
     upload() {
       //this.load = true;
       axios
@@ -92,7 +83,7 @@ export default {
           };
           this.$emit("uploadconsumer", consumer);
           this.$emit("uploadfile", res.data);
-          this.$emit("upload", "Upload :" + this.fileName + " completed");
+          this.$emit("upload", "Upload :" + this.fileName + " completed");//usato per inviare un messaggio
           this.reset();
         })
         .catch((err) => {
@@ -101,6 +92,15 @@ export default {
         .finally(() => {
           //this.load = false;
         });
+    },
+     reset() {
+      this.file = "";
+      this.fileName = "";
+      this.hashtag = "";
+      this.extension = "";
+      this.usernameConsumer = "";
+      this.nameConsumer = "";
+      this.emailConsumer = "";
     },
   },
 };
