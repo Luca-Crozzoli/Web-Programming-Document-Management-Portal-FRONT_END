@@ -89,6 +89,7 @@ export default {
   },
   // Acosa serve questo created? Serve solo a me per fare il debug
   created() {
+    console.clear();
     console.log(process.env.VUE_APP_APIROOT); //scrive nellla console dove mi trovo
   },
 };

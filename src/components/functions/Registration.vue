@@ -27,9 +27,7 @@
 import Credential from "../values/Credential.vue";
 import Userinfo from "../values/AccountInfo.vue";
 import Logo from "../values/Logo.vue";
-
 import axios from "axios";
-axios.defaults.headers["Authorization"] = `Bearer ${localStorage.getItem("JWTToken")}`;
 
 export default {
   name: "Registration",
@@ -53,7 +51,7 @@ export default {
     Register() {
       //this.load = true;
       axios
-        .post(`${process.env.VUE_APP_APIROOT}/accounts/registration`, {
+      .post(`${process.env.VUE_APP_APIROOT}/accounts/registration`, {
           username: this.username,
           password: this.password,
           name: this.name,

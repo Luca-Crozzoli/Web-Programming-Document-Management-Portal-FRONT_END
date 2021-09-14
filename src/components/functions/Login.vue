@@ -16,6 +16,7 @@
 <script>
 import Credential from "../values/Credential.vue";
 import axios from "axios";
+import axiosInstance from '../axiosinstance/axiosinstance';
 export default {
   name: "Login",
   components: {
@@ -43,9 +44,13 @@ export default {
         .then((res) => {
           // https://stackoverflow.com/a/44534672
           localStorage.setItem("JWTToken", res.data);
+          axiosInstance.defaults.headers.common['Authorization'] = 'Bearer '+localStorage.getItem("JWTToken");
+          console.log("QUesto è il token "+ localStorage.getItem("JWTToken"));
           localStorage.setItem("Username", this.username);
+          console.log("QUesto è lo username "+ localStorage.getItem("Username"));
           this.$emit("loginuser", this.username);
           this.$emit("login", "Login done - " + this.username);
+          
         })
         .catch((err) => {
           this.$emit("login", err.response.data);

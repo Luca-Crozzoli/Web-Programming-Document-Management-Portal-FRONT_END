@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <article>
       <Navigationbar
         :applicant="'administrator'"
@@ -72,9 +72,8 @@ import List from "../components/layout/List.vue";
 import Toasts from "../components/layout/Toasts.vue";
 
 import axios from "axios";
-axios.defaults.headers["Authorization"] = `Bearer ${localStorage.getItem(
-  "JWTToken"
-)}`;
+axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem("JWTToken")}`;
+
 export default {
   name: "Admin_page",
   components: {
@@ -247,6 +246,7 @@ export default {
   },
 
   created() {
+    console.log("token from admin page after login: "+ localStorage.getItem("JWTToken"));
     this.lastMonth();
     this.date();
     this.loadData = true;
@@ -258,9 +258,5 @@ export default {
         this.loadData = false;
       });
   },
-
-  mounted(){
-     
-  }
 };
 </script>
