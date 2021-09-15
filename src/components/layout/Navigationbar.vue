@@ -19,10 +19,10 @@
           >
             {{ secondaryReport }}</b-nav-item
           >
-
+          <!--register account-->
           <b-nav-item-dropdown
             v-if="applicant === 'administrator'"
-            text="Register user"
+            text="Register account"
           >
             <b-dropdown-item
               @click="
