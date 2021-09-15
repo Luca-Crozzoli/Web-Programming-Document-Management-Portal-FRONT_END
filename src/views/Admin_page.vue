@@ -20,7 +20,7 @@
           :busy="loadData"
         />
 
-        <b-form @submit.prevent="data" @reset.prevent="lastMonth">
+        <b-form @submit.prevent="date" @reset.prevent="lastMonth">
           <Datepicker :dateFrom.sync="dateFrom" :dateTo.sync="dateTo" />
           <b-button type="submit" variant="primary">Filter</b-button>
           <b-button type="reset" variant="danger">Reset</b-button>
@@ -103,8 +103,8 @@ export default {
       otherActorsListFields: [
         //report fields
         "name",
-        { key: "loadedDoc", lable: "#doc", sortable: true },
-        { key: "consumerAssociated", lable: "#cons", sortable: true },
+        { key: "uploadedDocs", lable: "#doc", sortable: true },
+        { key: "consumers", lable: "#cons", sortable: true },
         "details",
       ],
       adminListFields: ["name", "details"],
