@@ -56,13 +56,13 @@
 
         <List
           :items="uploaderFilesList"
-          :fields="uploaderFilesFields"
+          :fields="uploaderFilesListFields"
           :busy="loadData"
           @downloadFile="download"
         />
       </section>
 
-      <ModInfo
+      <Modify
         v-show="section === 'modifyInfo'"
         :applicant="'consumer'"
         :role="'consumer'"
@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import ModInfo from "../components/functions/Modify.vue";
+import Modify from "../components/functions/Modify.vue";
 import Navigationbar from "../components/layout/Navigationbar.vue";
 import List from "../components/layout/List.vue";
 import Toasts from "../components/layout/Toasts.vue";
@@ -84,7 +84,7 @@ axios.defaults.headers["Authorization"] = `Bearer ${localStorage.getItem("JWTTok
 export default {
   name: "Consumer_page",
   components: {
-    ModInfo,
+    Modify,
     Navigationbar,
     List,
     Toasts,
@@ -104,8 +104,8 @@ export default {
       uploaderFilesList: [],
       uploaderFilesListFields: [
         "name",
-        { key: "loadDate", sortable: true },
-        { key: "visualizationDate", sortable: true },
+        { key: "dataUpload", sortable: true },
+        { key: "dataView", sortable: true },
         "hashtag",
         "download",
       ],
