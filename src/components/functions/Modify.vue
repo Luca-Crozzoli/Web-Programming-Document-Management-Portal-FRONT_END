@@ -53,7 +53,7 @@ export default {
     modify() {
       axios
         .post(
-          `${process.env.VUE_APP_APIROOT}/accounts/modInfo`,
+          `${process.env.VUE_APP_APIROOT}/accounts/modify`,
           {
             username: this.username,
             password: this.password,

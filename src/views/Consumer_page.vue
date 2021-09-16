@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import ModInfo from "../components/functions/ModInfo.vue";
+import ModInfo from "../components/functions/Modify.vue";
 import Navigationbar from "../components/layout/Navigationbar.vue";
 import List from "../components/layout/List.vue";
 import Toasts from "../components/layout/Toasts.vue";

@@ -65,7 +65,7 @@
 <script>
 import Datepicker from "../components/values/Datepicker.vue";
 import Delete from "../components/functions/Delete.vue";
-import ModInfo from "../components/functions/ModInfo.vue";
+import ModInfo from "../components/functions/Modify.vue";
 import Registration from "../components/functions/Registration.vue";
 import Navigationbar from "../components/layout/Navigationbar.vue";
 import List from "../components/layout/List.vue";
