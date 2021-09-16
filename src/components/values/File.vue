@@ -63,7 +63,7 @@ export default {
       this.transformbase64(selectedFile);
     },
     transformbase64(fileObject) {
-      const reader = new FileReader(); //posso immaginarlo come un buffer dove vado a ricevere il file
+      const reader = new FileReader(); //buffer where i receive the file
       //https://regex101.com/
       reader.onload = (event) => {
         this.fileStringInput = event.target.result.replace( /^data:.+;base64,/,"");
@@ -71,7 +71,7 @@ export default {
       reader.onerror = function (err) {
         console.log("Error: ", err);
       };
-      reader.readAsDataURL(fileObject); //se lettura va a buon fine .result Dataurl ed emissione dell'evento onload gestito da reader.onlad
+      reader.readAsDataURL(fileObject); //if reading done .result Dataurl and emission of the event onload gestito da reader.onlad
 
       //https://stackoverflow.com/questions/43708127/javascript-get-the-filename-and-extension-from-input-type-file
       let nameObject = fileObject.name;
