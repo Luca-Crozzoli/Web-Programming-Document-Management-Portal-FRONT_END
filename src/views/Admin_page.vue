@@ -8,7 +8,7 @@
         @showSection="showSection"
         @formRole="manageRole"
         @logout="displayMessage"
-        >Admin page</Navigationbar
+        >Admin {{ usernameAdmin }}</Navigationbar
       >
       <!--sezione in cui mostro tutti gli attori che non sono amministratori-->
       <section v-show="section === 'home'">
@@ -87,6 +87,7 @@ export default {
   },
   data() {
     return {
+      usrnameAdmin:"",
       section: "home",
       error: "",
       warning: "",
@@ -258,5 +259,8 @@ export default {
         this.loadData = false;
       });
   },
+  mounted(){
+    this.usernameAdmin = localStorage.getItem("Username");
+  }
 };
 </script>

@@ -7,7 +7,7 @@
         :secondaryReport="'Uploader Files'"
         @showSection="showSection"
         @logout="displayMessage"
-        >Consumer Page</Navigationbar
+        >Consumer {{ usernameConsumer }}</Navigationbar
       >
       <!--sezione in cui mostro tutti gli attori che non sono amministratori-->
       <section v-show="section === 'home'">
@@ -91,6 +91,7 @@ export default {
   },
   data() {
     return {
+      usernameConsumer:"",
       section: "home",
       error: "",
       warning: "",
@@ -241,5 +242,8 @@ export default {
         this.loadData = false;
       });
   },
+  mounted(){
+    this.usernameConsumer = localStorage.getItem("Username");
+  }
 };
 </script>

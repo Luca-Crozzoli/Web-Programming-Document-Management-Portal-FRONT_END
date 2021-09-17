@@ -5,11 +5,10 @@
         :applicant="'uploader'"
         :mainReport="'Consumers'"
         :secondaryReport="'Files'"
-        @loadeddata="updateBartitle"
         @showSection="showSection"
         @formRole="manageRole"
         @logout="displayMessage"
-        >Uploader {{ bartitle }}
+        >Uploader {{ usernameUploader }}
       </Navigationbar>
       <!--sezione in cui mostro tutti gli account che non sono amministratori-->
       <section v-show="section === 'home'">
@@ -98,7 +97,7 @@ export default {
   },
   data() {
     return {
-      bartitle: "",
+      usernameUploader: "",
       section: "home",
       error: "",
       warning: "",
@@ -261,5 +260,8 @@ export default {
         this.loadData = false;
       });
   },
+  mounted(){
+    this.usernameUploader = localStorage.getItem("Username");
+  }
 };
 </script>
