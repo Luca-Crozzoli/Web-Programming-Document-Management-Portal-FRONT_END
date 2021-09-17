@@ -28,9 +28,8 @@
 import Credential from "../values/Credential.vue";
 import UserInfo from "../values/AccountInfo.vue";
 import Logo from "../values/Logo.vue";
-
 import axios from "axios";
-axios.defaults.headers["Authorization"] = `Bearer ${localStorage.getItem("JWTToken")}`;
+
 export default {
   name: "ModInfo",
   props: ["applicant", "role"], //applicant chi richeide che avvenga la modifica, role: ruolo dell'utente da modificare

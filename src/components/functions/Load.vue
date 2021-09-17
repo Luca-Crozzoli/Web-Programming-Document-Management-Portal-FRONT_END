@@ -40,9 +40,8 @@
 <script>
 import UserInfo from "../values/AccountInfo.vue";
 import File from "../values/File.vue";
-
 import axios from "axios";
-axios.defaults.headers["Authorization"] = `Bearer ${localStorage.getItem("JWTToken")}`;
+
 export default {
   name: "Load",
   components: {
