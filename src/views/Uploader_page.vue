@@ -79,11 +79,8 @@ import Load from "../components/functions/Load.vue";
 import ModInfo from "../components/functions/Modify.vue";
 import Registration from "../components/functions/Registration.vue";
 import Toasts from "../components/layout/Toasts.vue";
-
 import axios from "axios";
-axios.defaults.headers["Authorization"] = `Bearer ${localStorage.getItem(
-  "JWTToken"
-)}`;
+
 export default {
   name: "Uploader_page",
   components: {
@@ -108,7 +105,7 @@ export default {
 
       uploaderFilesList: [], //lista di documenti caricati dall'uploader **1**
       consumerList: [],
-      consumerListFields: ["name", "files", "details"],
+      consumerListFields: ["name", "files", "info"],
       consumerFilesList: [], //lista di documenti del consumer ottenuta filtrando la lista dei file caricati dall'uploader vedi **1**
       consumerFilesListFields: [
         "id",

@@ -82,7 +82,7 @@ tbody-tr-class aspetto css dell'elemnto tablerow-->
         ></b-img
       ></template>
 
-      <template #cell(details)="row">
+      <template #cell(info)="row">
         <b-button @click="row.toggleDetails">
           {{ row.detailsShowing ? "Hide" : "Show" }} Details
         </b-button>

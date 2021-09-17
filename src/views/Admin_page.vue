@@ -14,8 +14,8 @@
       <section v-show="section === 'home'">
         <header><h3>Resume</h3></header>
         <List
-          :items="otherActorsList"
-          :fields="otherActorsListFields"
+          :items="adminReportList"
+          :fields="adminReportListFields"
           :tableDescription="description"
           :busy="loadData"
         />
@@ -70,9 +70,7 @@ import Registration from "../components/functions/Registration.vue";
 import Navigationbar from "../components/layout/Navigationbar.vue";
 import List from "../components/layout/List.vue";
 import Toasts from "../components/layout/Toasts.vue";
-
 import axios from "axios";
-axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem("JWTToken")}`;
 
 export default {
   name: "Admin_page",
@@ -94,28 +92,29 @@ export default {
       success: "",
 
       loadData: false,
-      otherActorsList: [], //report
+      adminReportLi: [], //report
       adminList: [],
       dateFrom: "",
       dateTo: "",
       dateFromConfirmed: "",
       dateToConfirmed: "",
       formRole: "",
-      otherActorsListFields: [
+      adminReportListFields: [
         //report fields
+        "username",
         "name",
-        { key: "uploadedDocs", lable: "#doc", sortable: true },
-        { key: "consumers", lable: "#cons", sortable: true },
-        "details",
+        { key: "uploadedDocs",  sortable: true },
+        { key: "uploaderConsumers", sortable: true },
+        "info",
       ],
-      adminListFields: ["name", "details"],
+      adminListFields: ["name", "info"],
     };
   },
   computed: {
     //vado a valorizzare gli elementi
     listUsername: function () {
       let listUsers = [];
-      this.otherActorsList.forEach((item) => {
+      this.adminReportLi.forEach((item) => {
         listUsers.push(item.username);
       });
       this.adminList.forEach((item) => {
@@ -179,7 +178,7 @@ export default {
           loadedDoc: 0,
           consumerAssociated: 0,
         };
-        this.otherActorsList.push(actor);
+        this.adminReportLis.push(actor);
       }
     },
     modinfo_user(userIn) {
@@ -194,18 +193,18 @@ export default {
           this.adminList[index].email = user.email;
         }
       } else {
-        let index = this.otherActorsList.findIndex(
+        let index = this.adminReportLis.findIndex(
           (item) => item.username === user.username
         );
         if (index !== -1) {
-          this.otherActorsList[index].name = user.name;
-          this.otherActorsList[index].email = user.email;
+          this.adminReportList[index].name = user.name;
+          this.adminReportList[index].email = user.email;
         }
       }
     },
     delete_user(usernameIn) {
       if (usernameIn.length === 4) {
-        this.otherActorsList = this.otherActorsList.filter(
+        this.adminReportLis = this.adminReportLis.filter(
           (item) => item.username !== usernameIn
         );
       } else {
@@ -222,7 +221,7 @@ export default {
           to: this.dateTo,
         })
         .then((res) => {
-          this.otherActorsList = res.data;
+          this.adminReportList = res.data;
           this.dateFromConfirmed = this.dateFrom;
           this.dateToConfirmed = this.dateTo;
           this.displayMessage("Resume done!");

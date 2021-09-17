@@ -78,9 +78,8 @@ import Modify from "../components/functions/Modify.vue";
 import Navigationbar from "../components/layout/Navigationbar.vue";
 import List from "../components/layout/List.vue";
 import Toasts from "../components/layout/Toasts.vue";
-
 import axios from "axios";
-axios.defaults.headers["Authorization"] = `Bearer ${localStorage.getItem("JWTToken")}`;
+
 export default {
   name: "Consumer_page",
   components: {
@@ -101,7 +100,7 @@ export default {
       uploaderConfirmed: "",
       consumerFilesList: [],
       uploaderList: [],
-      uploaderListFields: ["logo", "name", "details", "files"],
+      uploaderListFields: ["logo", "name", "info", "files"],
       uploaderFilesList: [],
       uploaderFilesListFields: [
         "name",
