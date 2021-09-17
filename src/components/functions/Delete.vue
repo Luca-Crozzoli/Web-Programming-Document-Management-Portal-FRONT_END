@@ -47,7 +47,6 @@
 
 <script>
 import axios from "axios";
-axios.defaults.headers["Authorization"] = `Bearer ${localStorage.getItem("JWTToken")}`;
 
 export default {
   name: "Delete",

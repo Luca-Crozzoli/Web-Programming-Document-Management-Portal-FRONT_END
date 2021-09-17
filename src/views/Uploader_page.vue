@@ -5,11 +5,12 @@
         :applicant="'uploader'"
         :mainReport="'Consumers'"
         :secondaryReport="'Files'"
+        @loadeddata="updateBartitle"
         @showSection="showSection"
         @formRole="manageRole"
         @logout="displayMessage"
-        >Uploader page</Navigationbar
-      >
+        >Uploader {{ bartitle }}
+      </Navigationbar>
       <!--sezione in cui mostro tutti gli account che non sono amministratori-->
       <section v-show="section === 'home'">
         <header><h3>Consumer List</h3></header>
@@ -22,7 +23,7 @@
       </section>
       <section v-show="section === 'list2'">
         <header>
-          <h3>Files of {{ consumerConfirmed }}</h3>
+          <h3>Files of {{ consumerSelected }}</h3>
         </header>
 
         <!--sezione in cui mostro i file del consumer che ho selezionato -->
@@ -97,13 +98,14 @@ export default {
   },
   data() {
     return {
+      bartitle: "",
       section: "home",
       error: "",
       warning: "",
       success: "",
 
       formRole: "",
-      consumerConfirmed: "",
+      consumerSelected: "",
 
       uploaderFilesList: [], //lista di documenti caricati dall'uploader **1**
       consumerList: [],
@@ -133,12 +135,15 @@ export default {
     listFile: function () {
       let listFiles = [];
       this.uploaderFilesList.forEach((item) => {
-        listFiles.push(item.id +": "+ item.name);
+        listFiles.push(item.id + ": " + item.name);
       });
       return listFiles;
     },
   },
   methods: {
+    updateBartitle() {
+      this.bartitle = localStorage.getItem("Username");
+    },
     showSection(sectionin) {
       this.section = sectionin;
     },
@@ -161,7 +166,7 @@ export default {
     },
 
     showFiles(usernameConsumer) {
-      this.consumerConfirmed = usernameConsumer;
+      this.consumerSelected = usernameConsumer;
       this.consumerFilesList = null;
       this.consumerFilesList = this.uploaderFilesList.filter(
         (item) => item.usernameCons === usernameConsumer
@@ -191,13 +196,13 @@ export default {
 
     upload_consumer(newConsumer) {
       const { username } = newConsumer;
-      if (this.consumerList.findIndex((el) => el.username === username) === -1) {
+      if (this.consumerList.findIndex((el) => el.username === username) === -1){
         this.consumerList.push(newConsumer);
       }
     },
     upload_file(fileLoaded) {
       this.uploaderFilesList.push(fileLoaded);
-      if (fileLoaded.usernameCons === this.consumerConfirmed) {
+      if (fileLoaded.usernameCons === this.consumerSelected) {
         this.consumerFilesList.push(fileLoaded);
       }
       this.orederingFile();
@@ -209,8 +214,8 @@ export default {
       this.uploaderFilesList = this.uploaderFilesList.filter(
         (item) => item.usernameConsumer !== usernameIn
       );
-      if (usernameIn === this.consumerConfirmed) {
-        this.consumerConfirmed = "";
+      if (usernameIn === this.consumerSelected) {
+        this.consumerSelected = "";
         this.consumerFilesList = [];
       }
     },
@@ -234,7 +239,7 @@ export default {
         return 0;
       });
       this.consumerFilesList = this.uploaderFilesList.filter(
-        (item) => item.usernameConsumer === this.consumerConfirmed
+        (item) => item.usernameConsumer === this.consumerSelected
       );
     },
   },

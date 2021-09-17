@@ -216,7 +216,7 @@ export default {
     date() {
       this.loadData = true;
       axios
-        .post(`${process.env.VUE_APP_APIROOT}/list/administrator/report`, {
+        .post(`${process.env.VUE_APP_APIROOT}/list/admin/report`, {
           from: this.dateFrom,
           to: this.dateTo,
         })
