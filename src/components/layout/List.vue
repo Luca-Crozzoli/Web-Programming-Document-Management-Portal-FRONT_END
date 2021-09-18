@@ -74,44 +74,44 @@ tbody-tr-class aspetto css dell'elemnto tablerow-->
     table-caption slot to diplay the table caption element-->
       <template #table-caption>{{ tableDescription }}</template>
       <!--cell(key) scoped slot for costum data rendering of field data key is the fields' key name-->
-      <template #cell(logo)="row">
+      <template #cell(logo)="data">
         <b-img
           rounded="circle"
-          :src="`${row.item.logo}`"
+          :src="`${data.item.logo}`"
           alt="Logo uploader"
         ></b-img
       ></template>
 
-      <template #cell(info)="row">
-        <b-button @click="row.toggleDetails">
-          {{ row.detailsShowing ? "Hide" : "Show" }} Details
+      <template #cell(info)="data">
+        <b-button @click="data.toggleDetails">
+          {{ data.detailsShowing ? "Hide" : "Show" }} Details
         </b-button>
       </template>
 
-      <template #cell(files)="row">
-        <b-button @click="$emit('showFiles', row.item.username)" variant="info"
+      <template #cell(files)="data">
+        <b-button @click="$emit('showFiles', data.item.username)" variant="info"
           >Show files</b-button
         >
       </template>
 
-      <template #cell(download)="row">
-        <b-button @click="$emit('downloadFile', row.item.id)">
+      <template #cell(download)="data">
+        <b-button @click="$emit('downloadFile', data.item.id)">
           Download
         </b-button>
       </template>
 
       <!-- template per i dettagli della tabella
       row-details scoped slot for optional rendering additional record details-->
-      <template #row-details="row">
+      <template #row-details="data">
         <b-card>
           <b-row>
             <b-col sm="3"><b>Username:</b></b-col>
-            <b-col>{{ row.item.username }}</b-col>
+            <b-col>{{ data.item.username }}</b-col>
           </b-row>
 
           <b-row>
             <b-col sm="3"><b>Email:</b></b-col>
-            <b-col>{{ row.item.email }}</b-col>
+            <b-col>{{ data.item.email }}</b-col>
           </b-row>
         </b-card>
       </template>
@@ -126,7 +126,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export default {
   name: "List",
-  props: ["items", "fields", "busy", "tableDescription"],
+  props: ["items", "fields", "busy", "tableDescription","itemsUploader","fieldsUploader"],
   data() {
     return {
       currentPage: 1,
@@ -138,7 +138,7 @@ export default {
   methods: {
     //utilizzato per evidenziare l'elemento non ancora visualizzato
     highlightNew(item, type) {
-      if (!item || type !== "row") return;
+      if (!item || type !== "data") return;
       if (item.dataView === "") return "table-primary";
     },
   },

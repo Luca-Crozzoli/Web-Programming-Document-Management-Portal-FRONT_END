@@ -1,10 +1,13 @@
 <template>
   <div>
-    <h1><slot></slot></h1>
     <b-navbar toggleable="lg" type="dark" variant="dark">
       <b-navbar-brand class="ml-my" @click="$emit('showSection', 'home')"
-        >NavBar</b-navbar-brand
+        ><slot></slot></b-navbar-brand
       >
+      <b-navbar-nav class="ml-auto"
+          ><Logout @logout="$emit('logout', 'logout')"
+        /></b-navbar-nav>
+      
       <b-navbar-toggle target="navbar-toggle-collapse" />
 
       <b-collapse id="navbar-toggle-collapse" is-nav>
@@ -89,9 +92,7 @@
             >Delete</b-nav-item
           >
         </b-navbar-nav>
-        <b-navbar-nav class="ml-auto"
-          ><Logout @logout="$emit('logout', 'logout')"
-        /></b-navbar-nav>
+        
       </b-collapse>
     </b-navbar>
   </div>
