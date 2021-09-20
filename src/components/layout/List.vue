@@ -3,32 +3,32 @@
     <b-row>
       <!-- opzioni delle pagine, quanti elementi si volgio visualizzare per pagina-->
       <b-col sm="6">
-          <b-form-group
-            label="For page:"
-            :label-for="per_page_select"
-            label-align="left"
-            label-size="sm"
-            label-cols="auto"
-            content-cols="auto"
-          >
-            <b-form-select
-              :id="per_page_select"
-              v-model="perPage"
-              :options="pageOptions"
-              size="sm"
-            ></b-form-select>
-          </b-form-group>
+        <b-form-group
+          label="For page:"
+          :label-for="per_page_select"
+          label-align="left"
+          label-size="sm"
+          label-cols="auto"
+          content-cols="auto"
+        >
+          <b-form-select
+            :id="per_page_select"
+            v-model="perPage"
+            :options="pageOptions"
+            size="sm"
+          ></b-form-select>
+        </b-form-group>
       </b-col>
-      
+
       <!-- indice delle pagine che sono presenti nel codice-->
       <b-col sm="6">
-          <b-pagination
-            v-model="currentPage"
-            :total-rows="rows"
-            :per-page="perPage"
-            align="fill"
-            size="sm"
-          ></b-pagination>
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+          align="fill"
+          size="sm"
+        ></b-pagination>
       </b-col>
     </b-row>
     <!--inizio della tabella,
@@ -45,6 +45,7 @@ currentpage-> valore della pagina corrente di defualt parte da 1
 perPage-> numero di righe da visualizzare per pagina
 tbody-tr-class aspetto css dell'elemnto tablerow-->
     <b-table
+      caption-top
       striped="true"
       hover="true"
       responsive="true"
@@ -125,7 +126,14 @@ import { v4 as uuidv4 } from "uuid";
 
 export default {
   name: "List",
-  props: ["items", "fields", "busy", "tableDescription","itemsUploader","fieldsUploader"],
+  props: [
+    "items",
+    "fields",
+    "busy",
+    "tableDescription",
+    "itemsUploader",
+    "fieldsUploader",
+  ],
   data() {
     return {
       currentPage: 1,

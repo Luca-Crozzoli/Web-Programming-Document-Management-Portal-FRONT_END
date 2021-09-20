@@ -2,22 +2,23 @@
   <div>
     <b-navbar toggleable="lg" type="dark" variant="dark">
       <b-navbar-brand class="ml-my" @click="$emit('showSection', 'home')"
-        ><slot></slot></b-navbar-brand
-      >
+        ><slot></slot
+      ></b-navbar-brand>
+
       <b-navbar-nav class="ml-auto"
-          ><Logout @logout="$emit('logout')"
-        /></b-navbar-nav>
-      
+        ><Logout @logout="$emit('logout')"
+      /></b-navbar-nav>
+
       <b-navbar-toggle target="navbar-toggle-collapse" />
 
       <b-collapse id="navbar-toggle-collapse" is-nav>
-        <b-navbar-nav>
+        <b-navbar-nav class="ml-auto">
           <b-nav-item @click="$emit('showSection', 'home')">
             {{ mainReport }}</b-nav-item
           >
 
           <b-nav-item
-            v-show="(applicant === 'administrator' || applicant === 'consumer')"
+            v-show="applicant === 'administrator' || applicant === 'consumer'"
             @click="$emit('showSection', 'list2')"
           >
             {{ secondaryReport }}</b-nav-item
@@ -29,13 +30,15 @@
           >
             <b-dropdown-item
               @click="
-                $emit('showSection', 'registration'), $emit('formRole', 'administrator')
+                $emit('showSection', 'registration'),
+                  $emit('formRole', 'administrator')
               "
               >Administrator</b-dropdown-item
             >
             <b-dropdown-item
               @click="
-                $emit('showSection', 'registration'), $emit('formRole', 'uploader')
+                $emit('showSection', 'registration'),
+                  $emit('formRole', 'uploader')
               "
               >Uploader</b-dropdown-item
             >
@@ -44,7 +47,8 @@
           <b-nav-item
             v-if="applicant === 'uploader'"
             @click="
-              $emit('showSection', 'registration'), $emit('formRole', 'consumer')
+              $emit('showSection', 'registration'),
+                $emit('formRole', 'consumer')
             "
             >Register consumer</b-nav-item
           >
@@ -61,19 +65,22 @@
             <b-dropdown-item
               v-if="applicant === 'administrator'"
               @click="
-                $emit('showSection', 'modifyInfo'), $emit('formRole', 'administrator')
+                $emit('showSection', 'modifyInfo'),
+                  $emit('formRole', 'administrator')
               "
               >Administrator</b-dropdown-item
             >
             <b-dropdown-item
               @click="
-                $emit('showSection', 'modifyInfo'), $emit('formRole', 'uploader')
+                $emit('showSection', 'modifyInfo'),
+                  $emit('formRole', 'uploader')
               "
               >Uploader</b-dropdown-item
             >
             <b-dropdown-item
               @click="
-                $emit('showSection', 'modifyInfo'), $emit('formRole', 'consumer')
+                $emit('showSection', 'modifyInfo'),
+                  $emit('formRole', 'consumer')
               "
               >Consumer</b-dropdown-item
             >
@@ -92,7 +99,6 @@
             >Delete</b-nav-item
           >
         </b-navbar-nav>
-        
       </b-collapse>
     </b-navbar>
   </div>

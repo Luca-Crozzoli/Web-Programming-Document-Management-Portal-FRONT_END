@@ -14,7 +14,15 @@
       <section v-show="section === 'home'">
         <header><h3>Resume</h3></header>
 
-        <b-dropdown
+        <b-form @submit.prevent="date" @reset.prevent="lastMonth">
+          <Datepicker :dateFrom.sync="dateFrom" :dateTo.sync="dateTo" />
+          <b-button-group>
+            <b-button type="submit" variant="primary">Filter</b-button>
+            <b-button type="reset" variant="danger">Reset</b-button>
+          </b-button-group>
+        </b-form>
+
+        <!--<b-dropdown
           block
           split
           menu-class="w-100"
@@ -26,7 +34,7 @@
             <b-button type="submit" variant="primary">Filter</b-button>
             <b-button type="reset" variant="danger">Reset</b-button>
           </b-form>
-        </b-dropdown>
+        </b-dropdown>-->
 
         <List
           :items="adminReportList"
@@ -34,13 +42,6 @@
           :tableDescription="description"
           :busy="loadData"
         />
-
-        <!--
-        <b-form @submit.prevent="date" @reset.prevent="lastMonth">
-          <Datepicker :dateFrom.sync="dateFrom" :dateTo.sync="dateTo" />
-          <b-button type="submit" variant="primary">Filter</b-button>
-          <b-button type="reset" variant="danger">Reset</b-button>
-        </b-form>-->
       </section>
 
       <!--sezione in cui mostro tutti gli amministratori-->
@@ -281,3 +282,16 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+form {
+  padding: none;
+  border: none;
+  text-align: left;
+  background-color: white;
+  max-width: 60%;
+}
+button-group { 
+ align-items: center;
+}
+</style>

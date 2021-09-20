@@ -1,22 +1,32 @@
 <template>
   <b-container fluid>
-    <b-form-group>
-      <label for="datepicker">Choose a date</label>
-      <b-form-datepicker 
-        id="dateFromIn"
-        type="date"
-        name="dateFromIn"
-        v-model="dateFromIn"
-        locale="en"
-      ></b-form-datepicker>
-      <b-form-datepicker
-        id="dateToIn"
-        type="date"
-        name="dateToIn"
-        v-model="dateToIn"
-        locale="en"
-      ></b-form-datepicker>
-    </b-form-group>
+    <b-row>
+      <b-col cols="6">
+        <label for="dateFromIn">FROM</label>
+        <b-form-datepicker
+          id="dateFromIn"
+          type="date"
+          name="dateFromIn"
+          v-model="dateFromIn"
+          locale="en"
+          menu-class="w-100"
+          calendar-width="100%"
+        ></b-form-datepicker>
+      </b-col>
+
+      <b-col cols="6">
+        <label for="dateFromIn">TO</label>
+        <b-form-datepicker
+          id="dateToIn"
+          type="date"
+          name="dateToIn"
+          v-model="dateToIn"
+          locale="en"
+          menu-class="w-100"
+          calendar-width="100%"
+        ></b-form-datepicker>
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 
