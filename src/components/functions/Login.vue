@@ -44,9 +44,7 @@ export default {
         .then((res) => {
           // https://stackoverflow.com/a/44534672
           localStorage.setItem("JWTToken", res.data);
-          console.log("QUesto è il token "+ localStorage.getItem("JWTToken"));
           localStorage.setItem("Username", this.username);
-          console.log("QUesto è lo username "+ localStorage.getItem("Username"));
           this.$emit("loginuser", this.username);
           this.$emit("login", "Login done - " + this.username);
           
