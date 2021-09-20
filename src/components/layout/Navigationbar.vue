@@ -5,7 +5,7 @@
         ><slot></slot></b-navbar-brand
       >
       <b-navbar-nav class="ml-auto"
-          ><Logout @logout="$emit('logout', 'logout')"
+          ><Logout @logout="$emit('logout')"
         /></b-navbar-nav>
       
       <b-navbar-toggle target="navbar-toggle-collapse" />

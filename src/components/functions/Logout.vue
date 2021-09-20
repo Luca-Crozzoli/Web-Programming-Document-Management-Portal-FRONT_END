@@ -3,14 +3,19 @@
 </template>
 
 <script>
+import axios from "axios"
 export default {
   name: "Logout",
   methods: {
     logout() {
-      localStorage.removeItem("JWTToken");
-      localStorage.removeItem("Username");
-      this.$emit('logout'); //evento gestito tramite l'entità messaggi
-      this.$router.push("/"); //forzatura alla home page
+      axios.get(`${process.env.VUE_APP_APIROOT}/logout`)
+      .then((res)=>{
+        this.$emit('logout',res.data);
+        localStorage.removeItem("JWTToken");
+        localStorage.removeItem("Username");
+        this.$router.push("/"); //forzatura alla home page
+      })
+       //this.$emit('logout'); //evento gestito tramite l'entità messaggi 
     },
   },
 
