@@ -13,6 +13,21 @@
       <!--sezione in cui mostro tutti gli attori che non sono amministratori-->
       <section v-show="section === 'home'">
         <header><h3>Resume</h3></header>
+
+        <b-dropdown
+          block
+          split
+          menu-class="w-100"
+          text="Date Filter"
+          class="m-2"
+        >
+          <b-form @submit.prevent="date" @reset.prevent="lastMonth">
+            <Datepicker :dateFrom.sync="dateFrom" :dateTo.sync="dateTo" />
+            <b-button type="submit" variant="primary">Filter</b-button>
+            <b-button type="reset" variant="danger">Reset</b-button>
+          </b-form>
+        </b-dropdown>
+
         <List
           :items="adminReportList"
           :fields="adminReportListFields"
@@ -20,11 +35,12 @@
           :busy="loadData"
         />
 
+        <!--
         <b-form @submit.prevent="date" @reset.prevent="lastMonth">
           <Datepicker :dateFrom.sync="dateFrom" :dateTo.sync="dateTo" />
           <b-button type="submit" variant="primary">Filter</b-button>
           <b-button type="reset" variant="danger">Reset</b-button>
-        </b-form>
+        </b-form>-->
       </section>
 
       <!--sezione in cui mostro tutti gli amministratori-->
@@ -85,7 +101,7 @@ export default {
   },
   data() {
     return {
-      usrnameAdmin:"",
+      usrnameAdmin: "",
       section: "home",
       error: "",
       warning: "",
@@ -103,7 +119,7 @@ export default {
         //report fields
         "username",
         "name",
-        { key: "uploadedDocs",  sortable: true },
+        { key: "uploadedDocs", sortable: true },
         { key: "uploaderConsumers", sortable: true },
         "info",
       ],
@@ -246,7 +262,9 @@ export default {
   },
 
   created() {
-    console.log("token from admin page after login: "+ localStorage.getItem("JWTToken"));
+    console.log(
+      "token from admin page after login: " + localStorage.getItem("JWTToken")
+    );
     this.lastMonth();
     this.date();
     this.loadData = true;
@@ -258,8 +276,8 @@ export default {
         this.loadData = false;
       });
   },
-  mounted(){
+  mounted() {
     this.usernameAdmin = localStorage.getItem("Username");
-  }
+  },
 };
 </script>

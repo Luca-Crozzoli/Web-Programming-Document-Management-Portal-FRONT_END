@@ -11,7 +11,6 @@
             label-cols="auto"
             content-cols="auto"
           >
-            <!--creazione dell'id per_page_selected perchè voglio che sia univoco-->
             <b-form-select
               :id="per_page_select"
               v-model="perPage"
@@ -20,8 +19,8 @@
             ></b-form-select>
           </b-form-group>
       </b-col>
+      
       <!-- indice delle pagine che sono presenti nel codice-->
-
       <b-col sm="6">
           <b-pagination
             v-model="currentPage"
