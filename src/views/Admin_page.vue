@@ -22,20 +22,6 @@
           </b-button-group>
         </b-form>
 
-        <!--<b-dropdown
-          block
-          split
-          menu-class="w-100"
-          text="Date Filter"
-          class="m-2"
-        >
-          <b-form @submit.prevent="date" @reset.prevent="lastMonth">
-            <Datepicker :dateFrom.sync="dateFrom" :dateTo.sync="dateTo" />
-            <b-button type="submit" variant="primary">Filter</b-button>
-            <b-button type="reset" variant="danger">Reset</b-button>
-          </b-form>
-        </b-dropdown>-->
-
         <List
           :items="adminReportList"
           :fields="adminReportListFields"
@@ -118,6 +104,7 @@ export default {
       formRole: "",
       adminReportListFields: [
         //report fields
+        "logo",
         "username",
         "name",
         { key: "uploadedDocs", sortable: true },
@@ -178,13 +165,12 @@ export default {
       this.formRole = roleIn;
     },
     registration_user(newUser) {
-      const { username, name, email, role, logo } = newUser;
+      const { username, name, email, role, logo} = newUser;
       if (role == "administrator") {
         const Admin = {
           username: username,
           name: name,
           email: email,
-          logo: logo,
         };
         this.adminList.push(Admin); //aggiungo l'admin alla lista
       } else {
@@ -194,6 +180,7 @@ export default {
           email: email,
           loadedDoc: 0,
           consumerAssociated: 0,
+          logo: logo
         };
         this.adminReportLis.push(actor);
       }

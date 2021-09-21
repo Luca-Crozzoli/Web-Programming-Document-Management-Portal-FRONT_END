@@ -52,7 +52,6 @@ export default {
   computed: {
     nameInput: {
       get: function () {
-        //vedi props
         return this.name;
       },
       set: function (newValue) {
@@ -61,7 +60,6 @@ export default {
     },
     emailInput: {
       get: function () {
-        //vedi props
         return this.email;
       },
       set: function (newValue) {

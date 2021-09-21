@@ -21,14 +21,14 @@
 </template>
 
 <script>
-//import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 export default {
   name: "Logo",
   props: ["required", "logo"],
   data() {
     return {
-      //idLogo: "",
+      idLogo: "",
       logoInput: null,
     };
   },
@@ -68,13 +68,13 @@ export default {
     },
   },
 
-  /*mounted() {
+  mounted() {
     if (this.required !== true) {
       document.getElementById(this.idLogo).removeAttribute("required");
     }
   },
   created() {
     this.idLogo = uuidv4();
-  },*/
+  },
 };
 </script>

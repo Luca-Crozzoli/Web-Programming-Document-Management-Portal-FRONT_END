@@ -65,6 +65,8 @@ export default {
     transformbase64(fileObject) {
       const reader = new FileReader(); //buffer where i receive the file
       //https://regex101.com/
+      //exemple data url in base 64 data:text/plain;base64,SGVsbG8sIFdvcmxkIQ== 
+      //^ start of a string; . any character; + one or more occourenncy
       reader.onload = (event) => {
         this.fileStringInput = event.target.result.replace( /^data:.+;base64,/,"");
       };
@@ -76,7 +78,7 @@ export default {
       //https://stackoverflow.com/questions/43708127/javascript-get-the-filename-and-extension-from-input-type-file
       let nameObject = fileObject.name;
       let lastDot = nameObject.lastIndexOf(".");
-      this.$emit("update:extension", nameObject.substring(lastDot));
+      this.$emit("update:extension", nameObject.substring(lastDot + 1));
     },
   },
   watch: {
