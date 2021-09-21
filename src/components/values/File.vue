@@ -1,7 +1,6 @@
 <template>
   <b-container fluid>
     <b-form-group id="input-groupfile" label="File:" label-for="fileInput">
-      <!--https://stackoverflow.com/questions/4093533/whats-the-difference-between-logical-events-and-native-events-in-gwt-->
       <b-form-file
         @change="handlefile"
         id="fileInput"
