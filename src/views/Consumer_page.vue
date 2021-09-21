@@ -202,7 +202,6 @@ export default {
           this.displayMessage("Download done");
         })
         .catch((err) => {
-          //this.console.log(err.response.data);
           this.displayMessage(err.response.data);
         })
         .finally(() => {
