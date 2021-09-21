@@ -13,7 +13,7 @@
         :password.sync="password"
       />
       <!--.sync per far un binding bidirezionale-->
-      <UserInfo :required="false" :framework="'modify'" :name.sync="name" :email.sync="email" />
+      <AccountInfo :required="false" :framework="'modify'" :name.sync="name" :email.sync="email" />
 
       <Logo v-if="role === 'uploader'" :required="false" :logo.sync="logo" />
 
@@ -26,7 +26,7 @@
 <script>
 
 import Credential from "../values/Credential.vue";
-import UserInfo from "../values/AccountInfo.vue";
+import AccountInfo from "../values/AccountInfo.vue";
 import Logo from "../values/Logo.vue";
 import axios from "axios";
 
@@ -35,7 +35,7 @@ export default {
   props: ["applicant", "role"], //applicant chi richeide che avvenga la modifica, role: ruolo dell'utente da modificare
   components: {
     Credential,
-    UserInfo,
+    AccountInfo,
     Logo
   },
   data() {
@@ -45,7 +45,6 @@ export default {
       name: "",
       email: "",
       logo:"",
-      //load: false
     };
   },
   methods: {
@@ -78,9 +77,6 @@ export default {
         .catch((err) => {
           this.$emit("modInfo", err.response.data); //utilizzato solamente per mvisualizzare dei messagi d'errore
         })
-        .finally(() => {
-          //this.load = false;
-        });
     },
     reset() {
       this.username = "";
