@@ -18,18 +18,6 @@
 
     <Toasts :error="error" :warning="warning" :success="success" />
 
-    <hr />
-    <router-link @click="displayMessage('Consumer')" to="/consumer_page"
-      >consumer</router-link
-    >
-    <hr />
-    <router-link @click="displayMessage('ERRConsumer')" to="/uploader_page"
-      >uploader</router-link
-    >
-    <hr />
-    <router-link @click="displayMessage('WARConsumer')" to="/admin_page"
-      >admin</router-link
-    >
   </article>
 </template>
 
