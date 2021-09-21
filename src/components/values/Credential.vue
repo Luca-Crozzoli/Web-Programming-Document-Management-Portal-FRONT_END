@@ -1,7 +1,12 @@
 <template>
   <b-container fluid>
     <b-form-group label="Username:" :label-for="usernameInputId">
-      <b-form-text v-show="framework === 'modify'">Select the account you want to modify. If you leave the USERNAME BLANK YOUR ACCOUNT WILL BE MODIFIED</b-form-text>
+      <b-form-text v-show="framework === 'modify'"
+        >Select the account you want to modify.
+        <strong
+          >If you leave the username blank your account will be modifed</strong
+        ></b-form-text
+      >
       <b-form-input
         :id="usernameInputId"
         type="text"
@@ -13,7 +18,8 @@
     </b-form-group>
 
     <b-form-group label="Password:" :label-for="passwordInputId">
-       <b-form-text v-show="framework === 'modify'"> Insert the new password
+      <b-form-text v-show="framework === 'modify'">
+        Insert the new password
       </b-form-text>
       <b-form-input
         :id="passwordInputId"
@@ -28,7 +34,7 @@
 </template>
 
 <script>
-import  {v4 as uuidv4} from "uuid";
+import { v4 as uuidv4 } from "uuid";
 export default {
   name: "Credential",
   props: ["required", "framework", "username", "password"], //framework serve ad indicare il constesto in cui son usate le credenziali
@@ -38,36 +44,37 @@ export default {
       passwordInputId: "",
     };
   },
-  computed:{
+  computed: {
     usernameInput: {
-      get: function() {
+      get: function () {
         //ritorna in username input il valore username che arriva dal parent (props)
         return this.username;
       },
-      set: function(newValue) {
+      set: function (newValue) {
         this.$emit("update:username", newValue);
       },
     },
     passwordInput: {
-      get: function() {
+      get: function () {
         //ritorna in password input il valore password che arriva dal parent (props)
         return this.password;
       },
-      set: function(newValue) {
+      set: function (newValue) {
         this.$emit("update:password", newValue);
       },
     },
   },
 
-  mounted() { //osservo il valore required che mi viene passato dal apretn (vedi props) e se è falso allora tolgo l'attributo required all'elemento html 
+  mounted() {
+    //osservo il valore required che mi viene passato dal apretn (vedi props) e se è falso allora tolgo l'attributo required all'elemento html
     if (this.required !== true) {
       document.getElementById(this.usernameInputId).removeAttribute("required");
       document.getElementById(this.passwordInputId).removeAttribute("required");
     }
   },
-  created(){
-    this.usernameInputId= uuidv4();
-    this.passwordInputId= uuidv4();
-  }
-}
+  created() {
+    this.usernameInputId = uuidv4();
+    this.passwordInputId = uuidv4();
+  },
+};
 </script>
