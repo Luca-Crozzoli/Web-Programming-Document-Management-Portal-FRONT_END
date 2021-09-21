@@ -1,15 +1,18 @@
 <template>
   <div>
     <article>
-      <Navigationbar
-        :applicant="'administrator'"
-        :mainReport="'Resume'"
-        :secondaryReport="'Administrators'"
-        @showSection="showSection"
-        @formRole="manageRole"
-        @logout="displayMessage"
-        >Admin {{ usernameAdmin }}</Navigationbar
-      >
+      <header>
+        <Navigationbar
+          :applicant="'administrator'"
+          :mainReport="'Resume'"
+          :secondaryReport="'Administrators'"
+          @showSection="showSection"
+          @formRole="manageRole"
+          @logout="displayMessage"
+          >Admin {{ usernameAdmin }}
+        </Navigationbar>
+      </header>
+
       <!--sezione in cui mostro tutti gli attori che non sono amministratori-->
       <section v-show="section === 'home'">
         <header><h3>Resume</h3></header>
@@ -33,6 +36,7 @@
       <!--sezione in cui mostro tutti gli amministratori-->
       <section v-show="section === 'list2'">
         <header><h3>Administrators List</h3></header>
+
         <List :items="adminList" :fields="adminListFields" :busy="loadData" />
       </section>
 
@@ -165,7 +169,7 @@ export default {
       this.formRole = roleIn;
     },
     registration_user(newUser) {
-      const { username, name, email, role, logo} = newUser;
+      const { username, name, email, role, logo } = newUser;
       if (role == "administrator") {
         const Admin = {
           username: username,
@@ -180,7 +184,7 @@ export default {
           email: email,
           loadedDoc: 0,
           consumerAssociated: 0,
-          logo: logo
+          logo: logo,
         };
         this.adminReportLis.push(actor);
       }
@@ -278,7 +282,7 @@ form {
   background-color: white;
   max-width: 60%;
 }
-button-group { 
- align-items: center;
+button-group {
+  align-items: center;
 }
 </style>

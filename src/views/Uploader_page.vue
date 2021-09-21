@@ -1,18 +1,21 @@
 <template>
   <div>
     <article>
-      <Navigationbar
-        :applicant="'uploader'"
-        :mainReport="'Consumers'"
-        :secondaryReport="'Files'"
-        @showSection="showSection"
-        @formRole="manageRole"
-        @logout="displayMessage"
-        >Uploader {{ usernameUploader }}
-      </Navigationbar>
+      <header>
+        <Navigationbar
+          :applicant="'uploader'"
+          :mainReport="'Consumers'"
+          :secondaryReport="'Files'"
+          @showSection="showSection"
+          @formRole="manageRole"
+          @logout="displayMessage"
+          >Uploader {{ usernameUploader }}
+        </Navigationbar>
+      </header>
       <!--sezione in cui mostro tutti gli account che non sono amministratori-->
       <section v-show="section === 'home'">
         <header><h3>Consumer List</h3></header>
+
         <List
           :items="consumerList"
           :fields="consumerListFields"
@@ -20,12 +23,12 @@
           @showFiles="showFiles"
         />
       </section>
+
       <section v-show="section === 'list2'">
         <header>
           <h3>Files of {{ consumerSelected }}</h3>
         </header>
 
-        <!--sezione in cui mostro i file del consumer che ho selezionato -->
         <List
           :items="consumerFilesList"
           :fields="consumerFilesListFields"
@@ -192,7 +195,9 @@ export default {
 
     upload_consumer(newConsumer) {
       const { username } = newConsumer;
-      if (this.consumerList.findIndex((el) => el.username === username) === -1){
+      if (
+        this.consumerList.findIndex((el) => el.username === username) === -1
+      ) {
         this.consumerList.push(newConsumer);
       }
     },
@@ -257,8 +262,8 @@ export default {
         this.loadData = false;
       });
   },
-  mounted(){
+  mounted() {
     this.usernameUploader = localStorage.getItem("Username");
-  }
+  },
 };
 </script>

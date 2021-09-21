@@ -1,17 +1,21 @@
 <template>
   <div>
     <article>
-      <Navigationbar
-        :applicant="'consumer'"
-        :mainReport="'Uploaders'"
-        :secondaryReport="'Uploader Files'"
-        @showSection="showSection"
-        @logout="displayMessage"
-        >Consumer {{ usernameConsumer }}</Navigationbar
-      >
+      <hader>
+        <Navigationbar
+          :applicant="'consumer'"
+          :mainReport="'Uploaders'"
+          :secondaryReport="'Uploader Files'"
+          @showSection="showSection"
+          @logout="displayMessage"
+          >Consumer {{ usernameConsumer }}
+        </Navigationbar>
+      </hader>
+
       <!--sezione in cui mostro tutti gli attori che non sono amministratori-->
       <section v-show="section === 'home'">
         <header><h3>Uploader List</h3></header>
+
         <List
           :items="uploaderList"
           :fields="uploaderListFields"
@@ -48,7 +52,7 @@
           <b-button
             variant="danger"
             size="sm"
-            @click="(hashtag = ''), hashtagFilter()" 
+            @click="(hashtag = ''), hashtagFilter()"
           >
             Reset</b-button
           >
@@ -90,7 +94,7 @@ export default {
   },
   data() {
     return {
-      usernameConsumer:"",
+      usernameConsumer: "",
       section: "home",
       error: "",
       warning: "",
@@ -240,8 +244,8 @@ export default {
         this.loadData = false;
       });
   },
-  mounted(){
+  mounted() {
     this.usernameConsumer = localStorage.getItem("Username");
-  }
+  },
 };
 </script>

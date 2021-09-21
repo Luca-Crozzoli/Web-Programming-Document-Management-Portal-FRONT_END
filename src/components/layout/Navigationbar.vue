@@ -2,7 +2,7 @@
   <div>
     <b-navbar toggleable="lg" type="dark" variant="dark">
       <b-navbar-brand class="ml-my" @click="$emit('showSection', 'home')"
-        ><slot></slot
+        ><h2><slot></slot></h2
       ></b-navbar-brand>
 
       <b-navbar-nav class="ml-auto"
