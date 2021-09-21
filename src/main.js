@@ -7,6 +7,7 @@ import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import router from './router';
 import axios from 'axios'
 
+//https://www.bezkoder.com/axios-interceptors-refresh-token/
 axios.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('JWTToken');
