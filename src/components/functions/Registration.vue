@@ -6,7 +6,7 @@
 
     <b-form @submit.prevent="Register" @reset="reset">
       <!--.sync per fare un binding bidirezionale-->
-      <Userinfo :required="true" :name.sync="name" :email.sync="email" />
+      <AccountInfo :required="true" :name.sync="name" :email.sync="email" />
       <!--.sync per fare un binding bidirezionale-->
       <Credential
         :required="true"
@@ -25,7 +25,7 @@
 
 <script>
 import Credential from "../values/Credential.vue";
-import Userinfo from "../values/AccountInfo.vue";
+import AccountInfo from "../values/AccountInfo.vue";
 import Logo from "../values/Logo.vue";
 import axios from "axios";
 
@@ -34,7 +34,7 @@ export default {
   props: ["applicant", "role"], //applicant== chi richiede la registarazione, role == che tipo di utente registro
   components: {
     Credential,
-    Userinfo,
+    AccountInfo,
     Logo,
   },
   data() {
@@ -44,12 +44,10 @@ export default {
       name: "",
       email: "",
       logo: "",
-      //load: false
     };
   },
   methods: {
     Register() {
-      //this.load = true;
       axios
       .post(`${process.env.VUE_APP_APIROOT}/accounts/registration`, {
           username: this.username,
@@ -75,9 +73,6 @@ export default {
         .catch((err) => {
           this.$emit("registration", err.response.data); //usato per trasemttere l'errore tramite le funzionalità messaggi
         })
-        .finally(() => {
-          //this.load = false;
-        });
     },
     reset() {
       this.username = "";

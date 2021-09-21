@@ -25,7 +25,8 @@
           />
         </b-form-group>
       </b-container>
-      <UserInfo
+      <AccountInfo
+        :framework="'load'"
         :required="false"
         :name.sync="nameConsumer"
         :email.sync="emailConsumer"
@@ -38,7 +39,7 @@
 </template>
 
 <script>
-import UserInfo from "../values/AccountInfo.vue";
+import AccountInfo from "../values/AccountInfo.vue";
 import File from "../values/File.vue";
 import axios from "axios";
 
@@ -46,7 +47,7 @@ export default {
   name: "Load",
   components: {
     File,
-    UserInfo,
+    AccountInfo,
   },
 
   data() {
@@ -58,12 +59,10 @@ export default {
       usernameConsumer: "",
       nameConsumer: "",
       emailConsumer: "",
-      //load: false;
     };
   },
   methods: {
     upload() {
-      //this.load = true;
       axios
         .post(`${process.env.VUE_APP_APIROOT}/files/upload`, {
           file: this.file,
@@ -88,9 +87,6 @@ export default {
         .catch((err) => {
           this.$emit("upload", err.response.data); //usato per trasemttere l'errore tramite le funzionalità messaggi
         })
-        .finally(() => {
-          //this.load = false;
-        });
     },
      reset() {
       this.file = "";

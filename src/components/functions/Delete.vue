@@ -55,12 +55,10 @@ export default {
     return {
       username: "",
       fileId: "",
-      //load: false 
     };
   },
   methods: {
     deleteActor() {
-      //this.load = true;
       axios
         .delete(
           `${process.env.VUE_APP_APIROOT}/accounts/delete/${this.username}`
@@ -73,12 +71,8 @@ export default {
         .catch((err) => {
           this.$emit("delete", err.response.data); // usato per trasmetter l'errore tramiete la funzionalità messaggio
         })
-        .finally(() => {
-          //this.load = false;
-        });
     },
     deleteFile() {
-      //this.load = true;
       axios
         .delete(`${process.env.VUE_APP_APIROOT}/files/delete/${this.fileId}`)
         .then((res) => {
@@ -89,9 +83,6 @@ export default {
         .catch((err) => {
           this.$emit("delete", err.response.data); //usato per trasmetter l'errore tramiete la funzionalità messaggio
         })
-        .finally(() => {
-          //this.load = false;
-        });
     },
   },
 };

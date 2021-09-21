@@ -26,12 +26,10 @@ export default {
     return {
       username: "",
       password: "",
-      //load: false,
     };
   },
   methods: {
     login() {
-      //this.load = true;
       axios
         .post(
           `${process.env.VUE_APP_APIROOT}/login`,
@@ -52,9 +50,6 @@ export default {
         .catch((err) => {
           this.$emit("login", err.response.data);
         })
-        .finally(() => {
-          //this.load = false;
-        });
     },
   },
 };

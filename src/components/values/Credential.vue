@@ -1,8 +1,7 @@
 <template>
   <b-container fluid>
     <b-form-group label="Username:" :label-for="usernameInputId">
-      <b-form-text v-show="framework === 'modify'">Select the account you want to modify, If you leave the username empty
-        your account will be modified </b-form-text>
+      <b-form-text v-show="framework === 'modify'">Select the account you want to modify. If you leave the USERNAME BLANK YOUR ACCOUNT WILL BE MODIFIED</b-form-text>
       <b-form-input
         :id="usernameInputId"
         type="text"

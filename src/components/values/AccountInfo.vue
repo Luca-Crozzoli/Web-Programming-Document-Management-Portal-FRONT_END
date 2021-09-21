@@ -1,8 +1,12 @@
 <template>
   <b-container fluid>
     <b-form-group label="Name/Surname:" :label-for="nameInputId">
-    <b-form-text v-show="framework === 'modify'">New Name and Surname, leave empty if you don't want to modify it
-        your account will be modified </b-form-text>
+      <b-form-text v-show="framework === 'modify'"
+        >New Name and Surname, leave empty if you don't want to modify it
+      </b-form-text>
+      <b-form-text v-show="framework === 'load'">
+        If the consumer is a new one enter Name/Surname
+      </b-form-text>
       <b-form-input
         :id="nameInputId"
         type="text"
@@ -15,7 +19,12 @@
     </b-form-group>
 
     <b-form-group label="Email:" :label-for="emailInputId">
-      <b-form-text v-show="framework === 'modify'">New mail, leave empty if you don't want to modify it </b-form-text>
+      <b-form-text v-show="framework === 'modify'"
+        >New mail, leave empty if you don't want to modify it</b-form-text
+      >
+      <b-form-text v-show="framework === 'load'">
+        If the consumer is a new one enter email
+      </b-form-text>
       <b-form-input
         :id="emailInputId"
         type="email"

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header><h1>Luca Sharing</h1></header>
+    <header><h1>Luca's Sharing Platform</h1></header>
     <router-view />
   </div>
 </template>
