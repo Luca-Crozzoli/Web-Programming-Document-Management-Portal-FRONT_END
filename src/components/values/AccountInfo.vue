@@ -68,7 +68,6 @@ export default {
     },
   },
   mounted() {
-    // sto agendo dal punto di vista html
     if (this.required !== true) {
       document.getElementById(this.nameInputId).removeAttribute("required");
       document.getElementById(this.emailInputId).removeAttribute("required");

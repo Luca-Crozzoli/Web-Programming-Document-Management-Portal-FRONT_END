@@ -1,8 +1,9 @@
 <template>
   <b-container fluid>
-    <b-form-group id="input-grouplogo" label="Logo:">
+    <b-form-group id="input-grouplogo" label="Logo:" :label-for="idLogo">
       <b-form-file
         @change="handlelogo"
+        :id="idLogo"
         type="file"
         name="logoInput"
         v-model="logoInput"
