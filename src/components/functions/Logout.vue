@@ -3,20 +3,18 @@
 </template>
 
 <script>
-import axios from "axios"
+import axios from "axios";
 export default {
   name: "Logout",
   methods: {
     logout() {
-      axios.get(`${process.env.VUE_APP_APIROOT}/logout`)
-      .then((res)=>{
-        this.$emit('logout',res.data);
+      axios.get(`${process.env.VUE_APP_APIROOT}/logout`).then((res) => {
+        this.$emit("logout", res.data);
         localStorage.removeItem("JWTToken");
         localStorage.removeItem("Username");
-        this.$router.push("/"); 
-      })
+        this.$router.push("/");
+      });
     },
   },
-
 };
 </script>
