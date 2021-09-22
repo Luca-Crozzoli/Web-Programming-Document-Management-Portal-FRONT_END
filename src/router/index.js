@@ -31,7 +31,7 @@ const routes = [
     component: Admin_page,
     meta:{ requiresAuth: true }
   },
-  {//mi riporta ad App.vue
+  {
     path: "*",
     redirect: "/",
   },
