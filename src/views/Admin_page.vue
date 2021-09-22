@@ -13,7 +13,7 @@
         </Navigationbar>
       </header>
 
-      <!--sezione in cui mostro tutti gli attori che non sono amministratori-->
+      <!--Section for uploader list-->
       <section v-show="section === 'home'">
         <header><h3>Resume</h3></header>
 
@@ -33,7 +33,7 @@
         />
       </section>
 
-      <!--sezione in cui mostro tutti gli amministratori-->
+      <!--Section for Adminditrator list-->
       <section v-show="section === 'list2'">
         <header><h3>Administrators List</h3></header>
 
