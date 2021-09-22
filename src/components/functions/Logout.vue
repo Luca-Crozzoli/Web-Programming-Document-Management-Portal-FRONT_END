@@ -13,9 +13,8 @@ export default {
         this.$emit('logout',res.data);
         localStorage.removeItem("JWTToken");
         localStorage.removeItem("Username");
-        this.$router.push("/"); //forzatura alla home page
+        this.$router.push("/"); 
       })
-       //this.$emit('logout'); //evento gestito tramite l'entità messaggi 
     },
   },
 
