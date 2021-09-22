@@ -1,5 +1,4 @@
 <template>
-  <div>
     <article>
       <header>
         <Navigationbar
@@ -66,7 +65,6 @@
 
       <Toasts :error="error" :warning="warning" :success="success" />
     </article>
-  </div>
 </template>
 
 <script>
