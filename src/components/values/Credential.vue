@@ -47,7 +47,7 @@ export default {
   computed: {
     usernameInput: {
       get: function () {
-        //ritorna in username input il valore username che arriva dal parent (props)
+        //return in usernameInput the value from the parent (username props)
         return this.username;
       },
       set: function (newValue) {
@@ -56,7 +56,7 @@ export default {
     },
     passwordInput: {
       get: function () {
-        //ritorna in password input il valore password che arriva dal parent (props)
+        //return in passwordINput the value from th eparent (password props)
         return this.password;
       },
       set: function (newValue) {
@@ -66,7 +66,7 @@ export default {
   },
 
   mounted() {
-    //osservo il valore required che mi viene passato dal apretn (vedi props) e se è falso allora tolgo l'attributo required all'elemento html
+    //remove the HTML attribute for the elements form input in the document
     if (this.required !== true) {
       document.getElementById(this.usernameInputId).removeAttribute("required");
       document.getElementById(this.passwordInputId).removeAttribute("required");
