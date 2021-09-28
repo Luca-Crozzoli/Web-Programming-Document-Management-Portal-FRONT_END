@@ -69,16 +69,14 @@ export default {
         }
       }, 3000);
     },
-    //metodo utilizzato per fare il display del messaggio e ritorno alla sezione login
     registration(message) {
       this.displayMessage(message);
       this.section = "home";
     },
   },
-  // Acosa serve questo created? Serve solo a me per fare il debug
   created() {
     console.clear();
-    console.log(process.env.VUE_APP_APIROOT); //scrive nellla console dove mi trovo
+    console.log(process.env.VUE_APP_APIROOT);
   },
 };
 </script>

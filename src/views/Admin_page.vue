@@ -97,7 +97,7 @@ export default {
       success: "",
 
       loadData: false,
-      adminReportLi: [], //report
+      adminReportList: [], //report
       adminList: [],
       dateFrom: "",
       dateTo: "",
@@ -117,10 +117,9 @@ export default {
     };
   },
   computed: {
-    //vado a valorizzare gli elementi
     listUsername: function () {
       let listUsers = [];
-      this.adminReportLi.forEach((item) => {
+      this.adminReportList.forEach((item) => {
         listUsers.push(item.username);
       });
       this.adminList.forEach((item) => {
@@ -184,7 +183,7 @@ export default {
           consumerAssociated: 0,
           logo: logo,
         };
-        this.adminReportLis.push(actor);
+        this.adminReportList.push(actor);
       }
     },
     modinfo_user(userIn) {
@@ -199,7 +198,7 @@ export default {
           this.adminList[index].email = user.email;
         }
       } else {
-        let index = this.adminReportLis.findIndex(
+        let index = this.adminReportList.findIndex(
           (item) => item.username === user.username
         );
         if (index !== -1) {
@@ -210,7 +209,7 @@ export default {
     },
     delete_user(usernameIn) {
       if (usernameIn.length === 4) {
-        this.adminReportLis = this.adminReportLis.filter(
+        this.adminReportList = this.adminReportList.filter(
           (item) => item.username !== usernameIn
         );
       } else {

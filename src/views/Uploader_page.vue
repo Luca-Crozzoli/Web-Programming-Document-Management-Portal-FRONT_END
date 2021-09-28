@@ -11,7 +11,7 @@
           >Uploader {{ usernameUploader }}
         </Navigationbar>
       </header>
-      <!--sezione in cui mostro tutti gli account che non sono amministratori-->
+
       <section v-show="section === 'home'">
         <header><h3>Consumer List</h3></header>
 
@@ -247,7 +247,7 @@ export default {
     axios
       .get(`${process.env.VUE_APP_APIROOT}/list/consumers`)
       .then((res) => (this.consumerList = res.data))
-      .catch((err) => this.displayMessage(err.toString())); //utilizzo dei messaggi
+      .catch((err) => this.displayMessage(err.toString()));
 
     axios
       .get(`${process.env.VUE_APP_APIROOT}/list/uploader/files`)
@@ -255,7 +255,7 @@ export default {
         this.uploaderFilesList = res.data;
         console.log("risposta per i file uploadati: " + res.data);
       })
-      .catch((err) => this.displayMessage(err.toString())) //utilizzo dei messaggi
+      .catch((err) => this.displayMessage(err.toString()))
       .finally(() => {
         this.loadData = false;
       });
