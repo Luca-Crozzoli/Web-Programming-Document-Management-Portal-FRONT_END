@@ -157,7 +157,7 @@ export default {
         if ((a.visualizationDate === "") ^ (b.visualizationDate === "")) {
           if (a.visualizationDate < b.visualizationDate) return -1;
           if (a.visualizationDate > b.visualizationDate) return 1;
-        }
+        }//pi recente in termine di load date
         if (a.loadDate < b.loadDate) return 1;
         if (a.loadDate > b.loadDate) return -1;
         return 0;
