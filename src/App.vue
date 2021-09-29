@@ -58,9 +58,8 @@ h4 {
 
 form {
   padding: 10px;
-  border: 1px solid #2c3e50;
   text-align: left;
-  background-color: aliceblue;
+  background-color: lightgray;
 
   display: flex;
   flex-direction: column;
