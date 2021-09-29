@@ -77,7 +77,7 @@ export default {
       //https://stackoverflow.com/questions/43708127/javascript-get-the-filename-and-extension-from-input-type-file
       let nameObject = fileObject.name;
       let lastDot = nameObject.lastIndexOf(".");
-      this.$emit("update:extension", nameObject.substring(lastDot + 1));
+      this.$emit("update:extension", nameObject.substring(lastDot));
     },
   },
   watch: {
