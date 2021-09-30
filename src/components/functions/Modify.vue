@@ -8,12 +8,12 @@
       <Credential
         v-show="applicant !== 'consumer'"
         :required="false"
-        :framework="'modify'"
+        :context="'modify'"
         :username.sync="username"
         :password.sync="password"
       />
       <!--.sync per far un binding bidirezionale-->
-      <AccountInfo :required="false" :framework="'modify'" :name.sync="name" :email.sync="email" />
+      <AccountInfo :required="false" :context="'modify'" :name.sync="name" :email.sync="email" />
 
       <Logo v-if="role === 'uploader'" :required="false" :logo.sync="logo" />
 

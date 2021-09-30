@@ -10,7 +10,7 @@
       <!--.sync per fare un binding bidirezionale-->
       <Credential
         :required="true"
-        :framework="role"
+        :context="role"
         :username.sync="username"
         :password.sync="password"
       />
@@ -54,7 +54,7 @@ export default {
           password: this.password,
           name: this.name,
           email: this.email,
-          role: this.role, //role come props diventa disponibile anche nel template
+          role: this.role, 
           logo: this.logo,
         })
         .then((res) => {
@@ -66,7 +66,7 @@ export default {
             role: this.role, //riferimento alle props.
             logo: this.logo,
           };
-          this.$emit("registrationuser", newUser);
+          this.$emit("registrationuser", newUser);//aggiungere gli utenti nuovi alla lista
           this.$emit("registration", res.data); //usato per trasemttere il risultato della respons tramite funzonalità messaggi
           this.reset();
         })

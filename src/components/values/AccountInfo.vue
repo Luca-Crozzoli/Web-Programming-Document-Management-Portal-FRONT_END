@@ -1,10 +1,10 @@
 <template>
   <b-container fluid>
     <b-form-group label="Name/Surname:" :label-for="nameInputId">
-      <b-form-text v-show="framework === 'modify'"
+      <b-form-text v-show="context === 'modify'"
         >New Name and Surname, leave empty if you don't want to modify it
       </b-form-text>
-      <b-form-text v-show="framework === 'load'">
+      <b-form-text v-show="context === 'load'">
         If the consumer is a new one enter Name/Surname
       </b-form-text>
       <b-form-input
@@ -19,10 +19,10 @@
     </b-form-group>
 
     <b-form-group label="Email:" :label-for="emailInputId">
-      <b-form-text v-show="framework === 'modify'"
+      <b-form-text v-show="context === 'modify'"
         >New mail, leave empty if you don't want to modify it</b-form-text
       >
-      <b-form-text v-show="framework === 'load'">
+      <b-form-text v-show="context === 'load'">
         If the consumer is a new one enter email
       </b-form-text>
       <b-form-input
@@ -42,7 +42,7 @@
 import { v4 as uuidv4 } from "uuid";
 export default {
   name: "Userinfo",
-  props: ["required", "framework", "name", "email"],
+  props: ["required", "context", "name", "email"],
   data() {
     return {
       nameInputId: "",

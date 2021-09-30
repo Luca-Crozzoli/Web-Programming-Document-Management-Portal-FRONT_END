@@ -26,7 +26,7 @@
         </b-form-group>
       </b-container>
       <AccountInfo
-        :framework="'load'"
+        :context="'load'"
         :required="false"
         :name.sync="nameConsumer"
         :email.sync="emailConsumer"
