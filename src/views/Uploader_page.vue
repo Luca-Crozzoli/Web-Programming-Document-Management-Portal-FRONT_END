@@ -229,7 +229,7 @@ export default {
 
     orederingFile() {
       this.uploaderFilesList.sort(function (a, b) {
-        if ((a.visualizationDate === "") ^ (b.visualizationDate === "")) {
+        if ((a.visualizationDate === "") ^ (b.visualizationDate === "")) { //^XOR
           if (a.visualizationDate < b.visualizationDate) return -1;
           if (a.visualizationDate > b.visualizationDate) return 1;
         }

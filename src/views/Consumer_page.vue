@@ -154,7 +154,7 @@ export default {
     },
     orederingFile() {
       this.consumerFilesList.sort(function (a, b) {
-        if ((a.visualizationDate === "") ^ (b.visualizationDate === "")) {
+        if ((a.visualizationDate === "") ^ (b.visualizationDate === "")) {//^XOR
           if (a.visualizationDate < b.visualizationDate) return -1;
           if (a.visualizationDate > b.visualizationDate) return 1;
         }//piu recente in termine di load date
