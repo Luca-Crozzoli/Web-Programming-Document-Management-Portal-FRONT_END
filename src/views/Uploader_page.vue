@@ -1,75 +1,75 @@
 <template>
-    <article>
+  <article>
+    <header>
+      <Navigationbar
+        :applicant="'uploader'"
+        :mainReport="'Consumers'"
+        :secondaryReport="'Files'"
+        @showSection="showSection"
+        @formRole="manageRole"
+        @logout="displayMessage"
+        >Uploader {{ usernameUploader }}
+      </Navigationbar>
+    </header>
+
+    <section v-show="section === 'home'">
+      <header><h3>Consumer List</h3></header>
+
+      <List
+        :items="consumerList"
+        :fields="consumerListFields"
+        :busy="loadData"
+        @showFiles="showFiles"
+      />
+    </section>
+
+    <section v-show="section === 'list2'">
       <header>
-        <Navigationbar
-          :applicant="'uploader'"
-          :mainReport="'Consumers'"
-          :secondaryReport="'Files'"
-          @showSection="showSection"
-          @formRole="manageRole"
-          @logout="displayMessage"
-          >Uploader {{ usernameUploader }}
-        </Navigationbar>
+        <h3>Files of {{ consumerSelected }}</h3>
       </header>
 
-      <section v-show="section === 'home'">
-        <header><h3>Consumer List</h3></header>
-
-        <List
-          :items="consumerList"
-          :fields="consumerListFields"
-          :busy="loadData"
-          @showFiles="showFiles"
-        />
-      </section>
-
-      <section v-show="section === 'list2'">
-        <header>
-          <h3>Files of {{ consumerSelected }}</h3>
-        </header>
-
-        <List
-          :items="consumerFilesList"
-          :fields="consumerFilesListFields"
-          :busy="loadData"
-        />
-      </section>
-
-      <Registration
-        v-show="section === 'registration'"
-        :applicant="'uploader'"
-        :role="'consumer'"
-        @registrationuser="registration_user"
-        @registration="displayMessage"
+      <List
+        :items="consumerFilesList"
+        :fields="consumerFilesListFields"
+        :busy="loadData"
       />
+    </section>
 
-      <ModInfo
-        v-show="section === 'modifyInfo'"
-        :applicant="'uploader'"
-        :role="formRole"
-        @modinfouser="modinfo_user"
-        @modInfo="displayMessage"
-      />
+    <Registration
+      v-show="section === 'registration'"
+      :applicant="'uploader'"
+      :role="'consumer'"
+      @registrationuser="registration_user"
+      @registration="displayMessage"
+    />
 
-      <Load
-        v-show="section === 'load'"
-        @uploadconsumer="upload_consumer"
-        @uploadfile="upload_file"
-        @upload="displayMessage"
-      />
+    <ModInfo
+      v-show="section === 'modifyInfo'"
+      :applicant="'uploader'"
+      :role="formRole"
+      @modinfouser="modinfo_user"
+      @modInfo="displayMessage"
+    />
 
-      <Delete
-        v-show="section === 'delete'"
-        :applicant="'uploader'"
-        :listFile="listFile"
-        :listUsername="listUsername"
-        @deleteusername="delete_user"
-        @deletefile="delete_file"
-        @delete="displayMessage"
-      />
+    <Load
+      v-show="section === 'load'"
+      @uploadconsumer="upload_consumer"
+      @uploadfile="upload_file"
+      @upload="displayMessage"
+    />
 
-      <Toasts :error="error" :warning="warning" :success="success" />
-    </article>
+    <Delete
+      v-show="section === 'delete'"
+      :applicant="'uploader'"
+      :listFile="listFile"
+      :listUsername="listUsername"
+      @deleteusername="delete_user"
+      @deletefile="delete_file"
+      @delete="displayMessage"
+    />
+
+    <Toasts :error="error" :warning="warning" :success="success" />
+  </article>
 </template>
 
 <script>
@@ -229,7 +229,8 @@ export default {
 
     orederingFile() {
       this.uploaderFilesList.sort(function (a, b) {
-        if ((a.visualizationDate === "") ^ (b.visualizationDate === "")) { //^XOR
+        if ((a.visualizationDate === "") ^ (b.visualizationDate === "")) {
+          //^XOR
           if (a.visualizationDate < b.visualizationDate) return -1;
           if (a.visualizationDate > b.visualizationDate) return 1;
         }
@@ -253,7 +254,7 @@ export default {
       .get(`${process.env.VUE_APP_APIROOT}/list/uploader/files`)
       .then((res) => {
         this.uploaderFilesList = res.data;
-        console.log("risposta per i file uploadati: " + res.data);
+        console.log("response from uploader files api: " + res.data);
       })
       .catch((err) => this.displayMessage(err.toString()))
       .finally(() => {

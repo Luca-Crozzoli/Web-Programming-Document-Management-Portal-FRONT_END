@@ -177,28 +177,26 @@ export default {
             (file) => file.id === fileId
           );
 
-          // https://stackoverflow.com/questions/60915291/download-a-png-file-served-as-binary-octet-stream
+          //https://stackoverflow.com/questions/53772331/vue-html-js-how-to-download-a-file-to-browser-using-the-download-tag
+          //https://developer.mozilla.org/en-US/docs/Web/API/Blob
+          //https://stackoverflow.com/questions/60915291/download-a-png-file-served-as-binary-octet-stream
           const link = document.createElement("a");
           link.style.display = "none";
-          link.download = this.consumerFilesList[indexCurrent].name;
-          var blob = new Blob([res.data], { type: "application/octet-stream" }); //Blob oggetto che serfe per scaricare file
-          link.href = window.URL.createObjectURL(blob); //creo l'url basandomi sul blob e sulla finestra in cui mi trovo
+          link.download = this.consumerFilesList[indexCurrent].name; //label
+          var blob = new Blob([res.data], { type: "application/octet-stream" });
+          link.href = window.URL.createObjectURL(blob); 
           document.body.appendChild(link);
           link.click();
-          setTimeout(() => {
-            window.URL.revokeObjectURL(link.href);
-            link.remove();
-          }, 5000);
-
+          window.URL.revokeObjectURL(link.href);
+   
           if (this.consumerFilesList[indexCurrent].visualizationDate === "") {
             let now = new Date();
-            let dataScritta =
-              now.toISOString().substring(0, 10) + //data
+            let dataString =
+              now.toISOString().substring(0, 10) +
               " " +
-              now.getUTCHours() + //ora
-              now.toLocaleTimeString().substring(2); //minuti e secondi
+              now.getUTCHours(); 
             this.consumerFilesList[indexCurrent].visualizationDate =
-              dataScritta;
+              dataString;
             this.orederingFile();
           }
           this.displayMessage("Download done");

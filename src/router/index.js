@@ -45,7 +45,7 @@ const router = new VueRouter({
 //https://tenmilesquare.com/resources/software-development/creating-an-authentication-navigation-guard-in-vue/
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (!localStorage.getItem("JWTToken")) { //getItem riotrna la stringa o null. null in questo caso viene considerato falsy
+    if (!localStorage.getItem("JWTToken")) { //if null falsy = enter the if body
       next({
         path: '/',
         query: { redirect: to.fullPath }//reindirzzio l'utente all'url che mi aveva chiesto dopo che sarà avvenuta l'autenticazione
@@ -64,7 +64,7 @@ router.beforeEach((to, from, next) => {
         });
       }
     } else {
-      next(); //provo ad entrare a www.miosito.com senza aver fatto niente, esempio url diretto
+      next(); 
     }
   } else {
     next(); // make sure to always call next()!
