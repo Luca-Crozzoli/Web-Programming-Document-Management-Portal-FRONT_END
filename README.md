@@ -1,4 +1,4 @@
-# vueclientnew
+# FRONT-END
 
 ## Project setup
 ```
