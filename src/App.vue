@@ -23,20 +23,12 @@ export default {
 }
 
 header {
-  padding: 10px;
+  padding: 6px;
   color: #fff;
   background-color: #343a40;
 }
 section > header {
-  padding: 0;
-}
-
-#Pagelogo {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 64px;
-  height: 64px;
+  padding: 0px;
 }
 
 @media all and (max-width: 500px) {
@@ -59,13 +51,14 @@ h4 {
 form {
   padding: 10px;
   text-align: left;
-  background-color: lightgray;
-
+  border:solid;
+  border-width: 1px;
   display: flex;
   flex-direction: column;
-  max-width: 600px;
+  max-width: 500px;
   margin:  auto;
 }
+
 
 .btn {
   margin: 10px;

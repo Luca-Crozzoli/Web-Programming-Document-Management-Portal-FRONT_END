@@ -245,3 +245,13 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#Pagelogo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 64px;
+  height: 64px;
+}
+</style>
