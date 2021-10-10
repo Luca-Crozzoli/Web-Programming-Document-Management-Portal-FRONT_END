@@ -120,7 +120,6 @@ export default {
     };
   },
   computed: {
-    //elementi della lista dalla quae posso eliminare gli username dei consumer
     listUsername: function () {
       let listAccounts = [];
       this.consumerList.forEach((item) => {
@@ -128,7 +127,6 @@ export default {
       });
       return listAccounts;
     },
-    //elementi della lista dalla quale posso eliminare i gfile basandomi sull'is
     listFile: function () {
       let listFiles = [];
       this.uploaderFilesList.forEach((item) => {

@@ -11,7 +11,6 @@
         </Navigationbar>
       </hader>
 
-      <!--sezione in cui mostro tutti gli attori che non sono amministratori-->
       <section v-show="section === 'home'">
         <header><h3>Uploader List</h3></header>
 
@@ -23,7 +22,6 @@
         />
       </section>
 
-      <!--sezione in cui mostro tutti i file in base all'uploader selezionato -->
       <section v-show="section === 'list2'">
         <header>
           <h3>Files uploaded by {{ uploaderConfirmed.name }}</h3>
@@ -115,7 +113,6 @@ export default {
     };
   },
   watch: {
-    //ogni qual volta uploaderConfirmed cambia viene chiamata questa funzione
     uploaderConfirmed: function () {
       if (this.uploaderConfirmed !== "")
         this.showFiles(this.uploaderConfirmed.username);

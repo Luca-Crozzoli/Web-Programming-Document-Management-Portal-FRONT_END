@@ -32,7 +32,7 @@
         />
       </section>
 
-      <!--Section for Adminditrator list-->
+      <!--Section for Administartors list-->
       <section v-show="section === 'list2'">
         <header><h3>Administrators List</h3></header>
 

@@ -7,7 +7,6 @@
     </section>
 
     <section v-show="section === 'registration'">
-      <!-- evento registration emesso dal componente per gestire solamente i messaggi-->
       <Registration
         :applicant="'consumer'"
         :role="'consumer'"
