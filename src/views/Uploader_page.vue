@@ -104,10 +104,10 @@ export default {
       formRole: "",
       consumerSelected: "",
 
-      uploaderFilesList: [], //lista di documenti caricati dall'uploader **1**
+      uploaderFilesList: [], 
       consumerList: [],
       consumerListFields: ["name", "files", "info"],
-      consumerFilesList: [], //lista di documenti del consumer ottenuta filtrando la lista dei file caricati dall'uploader vedi **1**
+      consumerFilesList: [], 
       consumerFilesListFields: [
         "id",
         "name",
