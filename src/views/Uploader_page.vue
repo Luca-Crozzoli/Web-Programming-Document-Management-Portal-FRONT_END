@@ -130,7 +130,7 @@ export default {
     listFile: function () {
       let listFiles = [];
       this.uploaderFilesList.forEach((item) => {
-        listFiles.push(item.id + ": " + item.name);
+        listFiles.push(item.id);
       });
       return listFiles;
     },
