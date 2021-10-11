@@ -130,9 +130,7 @@ export default {
     listFile: function () {
       let listFiles = [];
       this.uploaderFilesList.forEach((item) => {
-        if(item.id !== "deleted"){
           listFiles.push(item.id);
-        }
       });
       return listFiles;
     },
