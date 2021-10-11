@@ -1,13 +1,13 @@
 <template>
   <b-container fluid>
-    <b-form-group label="Username:" :label-for="usernameInputId">
+    <b-form-group  v-show="applicant !== 'consumer'" label="Username:" :label-for="usernameInputId">
       <b-form-text v-show="context === 'modify'"
         >Select the account you want to modify.
-        <strong
+        <strong 
           >If you leave the username blank your account will be modifed</strong
         ></b-form-text
       >
-      <b-form-input
+      <b-form-input 
         :id="usernameInputId"
         type="text"
         name="usernameInput"
@@ -37,7 +37,7 @@
 import { v4 as uuidv4 } from "uuid";
 export default {
   name: "Credential",
-  props: ["required", "context", "username", "password"], //context constesto in cui son usate le credenziali
+  props: ["applicant","required", "context", "username", "password"], //context constesto in cui son usate le credenziali
   data() {
     return {
       usernameInputId: "",

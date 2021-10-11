@@ -6,18 +6,12 @@
     <b-form @submit.prevent="modify" @reset="reset">
       <!--.sync per fare un binding bidirezionale-->
       <Credential
-        v-show="applicant !== 'consumer'"
+        :applicant="applicant"
         :required="false"
         :context="'modify'"
         :username.sync="username"
         :password.sync="password"
       />
-      <Credential
-      v-show="applicant === 'consumer'"
-        :required="false"
-        :context="'modify'"
-        :password.sync="password"
-        /> 
       <!--.sync per far un binding bidirezionale-->
       <AccountInfo :required="false" :context="'modify'" :name.sync="name" :email.sync="email" />
 
