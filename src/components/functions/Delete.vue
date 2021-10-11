@@ -33,7 +33,7 @@
             id="file"
             type="text"
             name="file"
-            v-model="fileid"
+            v-model="fileId"
             placeholder="file Id"
             required
           ></b-form-input>
