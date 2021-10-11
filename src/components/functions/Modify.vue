@@ -12,6 +12,12 @@
         :username.sync="username"
         :password.sync="password"
       />
+      <Credential
+      v-show="applicant === 'consumer'"
+        :required="false"
+        :context="'modify'"
+        :password.sync="password"
+        /> 
       <!--.sync per far un binding bidirezionale-->
       <AccountInfo :required="false" :context="'modify'" :name.sync="name" :email.sync="email" />
 
