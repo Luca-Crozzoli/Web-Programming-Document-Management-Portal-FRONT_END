@@ -104,10 +104,10 @@ export default {
       formRole: "",
       consumerSelected: "",
 
-      uploaderFilesList: [], 
+      uploaderFilesList: [],
       consumerList: [],
       consumerListFields: ["name", "files", "info"],
-      consumerFilesList: [], 
+      consumerFilesList: [],
       consumerFilesListFields: [
         "id",
         "name",
@@ -130,7 +130,9 @@ export default {
     listFile: function () {
       let listFiles = [];
       this.uploaderFilesList.forEach((item) => {
-        listFiles.push(item.id);
+        if (!item.file === null) {
+          listFiles.push(item.id);
+        }
       });
       return listFiles;
     },
