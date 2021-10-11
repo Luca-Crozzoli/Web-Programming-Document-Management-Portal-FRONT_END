@@ -113,7 +113,7 @@ export default {
         "name",
         { key: "dataUpload", sortable: true },
         { key: "dataView", sortable: true },
-        "indIP",
+        "indIp",
         "hashtag",
       ],
       loadData: false,
