@@ -56,7 +56,7 @@ export default {
     },
     passwordInput: {
       get: function () {
-        //return in passwordINput the value from th eparent (password props)
+        //return in passwordINput the value from the parent (password props)
         return this.password;
       },
       set: function (newValue) {
