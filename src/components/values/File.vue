@@ -67,7 +67,7 @@ export default {
       //exemple data url in base 64 data:text/plain;base64,SGVsbG8sIFdvcmxkIQ== 
       //^ start of a string; . any character; + one or more occourenncy
       reader.onload = (event) => {
-        this.fileStringInput = event.target.result.replace( /^data:.+;base64,/,"");
+        this.fileStringInput = event.target.result.replace( /^data:.+;base64,/,""); //event target denote the object which trigged the event
       };
       reader.onerror = function (err) {
         console.log("Error: ", err);
