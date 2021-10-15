@@ -56,7 +56,7 @@ router.beforeEach((to, from, next) => {
       } else if (localStorage.getItem("Username").length === 4) {
         this.$router.push("/uploader_page");
       } else if (localStorage.getItem("Username").includes("@")) {
-        this.$router.push("/admi_page");
+        this.$router.push("/admin_page");
       } else {
         this.$bvToast.toast(`ERR- Username unrecognized`,{
           title: "ERR",
