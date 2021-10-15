@@ -72,7 +72,7 @@ export default {
       reader.onerror = function (err) {
         console.log("Error: ", err);
       };
-      reader.readAsDataURL(fileObject); //if reading done .result Dataurl and emission of the event onload gestito da reader.onlad
+      reader.readAsDataURL(fileObject); //if reading done reader.result=Dataurl in base 64 and emission of the event onload gestito da reader.onlad
 
       //https://stackoverflow.com/questions/43708127/javascript-get-the-filename-and-extension-from-input-type-file
       let nameObject = fileObject.name;
