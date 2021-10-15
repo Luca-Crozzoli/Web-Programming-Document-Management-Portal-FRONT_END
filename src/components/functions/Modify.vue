@@ -32,7 +32,7 @@ import axios from "axios";
 
 export default {
   name: "ModInfo",
-  props: ["applicant", "role"], //applicant chi richeide che avvenga la modifica, role: ruolo dell'utente da modificare
+  props: ["applicant", "role"], //applicant chi richiede che avvenga la modifica, role: ruolo dell'utente da modificare
   components: {
     Credential,
     AccountInfo,
