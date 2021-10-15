@@ -179,7 +179,7 @@ export default {
           //https://stackoverflow.com/questions/60915291/download-a-png-file-served-as-binary-octet-stream
           const link = document.createElement("a");
           link.style.display = "none";
-          link.download = this.consumerFilesList[indexCurrent].name; //label
+          link.download = this.consumerFilesList[indexCurrent].name; //label, file downloaded and renamed with the property name
           var blob = new Blob([res.data], { type: "application/octet-stream" });
           link.href = window.URL.createObjectURL(blob); 
           document.body.appendChild(link);
