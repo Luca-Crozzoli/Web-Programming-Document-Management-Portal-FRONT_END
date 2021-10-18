@@ -20,7 +20,7 @@
         </b-form-group>
       </b-col>
 
-      <!-- indice delle pagine che sono presenti nel codice-->
+      <!-- index fo teh pages related with the form group to slect the number of row to diplay (PerPage)-->
       <b-col sm="6">
         <b-pagination
           v-model="currentPage"
