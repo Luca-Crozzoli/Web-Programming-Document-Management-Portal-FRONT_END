@@ -80,7 +80,7 @@ export default {
             logo: "",
           };
           this.$emit("uploadconsumer", consumer);
-          this.$emit("uploadfile", res.data);
+          this.$emit("uploadfile", res.data);//it returns a Json FileProxy
           this.$emit("upload", "Upload :" + this.fileName + " completed");//usato per inviare un messaggio
           this.reset();
         })
