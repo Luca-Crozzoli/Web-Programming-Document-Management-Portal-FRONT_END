@@ -154,7 +154,7 @@ export default {
         if ((a.visualizationDate === "") ^ (b.visualizationDate === "")) {//^XOR
           if (a.visualizationDate < b.visualizationDate) return -1;
           if (a.visualizationDate > b.visualizationDate) return 1;
-        }//piu recente in termine di load date
+        }//from the most recent uploaded
         if (a.loadDate < b.loadDate) return 1;
         if (a.loadDate > b.loadDate) return -1;
         return 0;
