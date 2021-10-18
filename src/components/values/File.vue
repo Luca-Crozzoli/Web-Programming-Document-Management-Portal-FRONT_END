@@ -90,10 +90,10 @@ export default {
   computed: {
     fileStringInput: {
       get: function () {
-        return this.file;
+        return this.file;//take the property from the parent
       },
       set: function (newValue) {
-        this.$emit("update:file", newValue);
+        this.$emit("update:file", newValue);//set the new value to the parent
       },
     },
     filenNameInput: {
