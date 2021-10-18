@@ -37,7 +37,7 @@
 import { v4 as uuidv4 } from "uuid";
 export default {
   name: "Credential",
-  props: ["applicant","required", "context", "username", "password"], //context constesto in cui son usate le credenziali
+  props: ["applicant","required", "context", "username", "password"], //context constesto in cui sono usate le credenziali
   data() {
     return {
       usernameInputId: "",
