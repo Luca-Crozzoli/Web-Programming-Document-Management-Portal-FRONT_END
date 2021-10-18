@@ -130,9 +130,9 @@ export default {
     "items",
     "fields",
     "busy",
-    "tableDescription",
-    "itemsUploader",
-    "fieldsUploader",
+    "tableDescription"
+    //"itemsUploader",
+    //"fieldsUploader",
   ],
   data() {
     return {
